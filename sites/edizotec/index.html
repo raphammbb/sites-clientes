@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Edizotec Refrigeração — Assistência técnica especializada em geladeiras, máquinas de lavar, fogões e linha branca. +15 anos de experiência. Atendimento a domicílio em São Paulo.">
+  <title>Edizotec Refrigeração | Assistência Técnica em São Paulo</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================
+       1. CSS Variables
+    ========================================== */
+    :root {
+      --color-primary:      #0f1f3d;
+      --color-secondary:    #1e3a6e;
+      --color-accent:       #f97316;
+      --color-accent-dark:  #ea6008;
+      --color-bg:           #ffffff;
+      --color-bg-alt:       #f4f6fa;
+      --color-text:         #1a1a2e;
+      --color-text-muted:   #5a6a8a;
+      --color-border:       #e2e8f0;
+
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'Manrope', sans-serif;
+
+      --radius:    10px;
+      --radius-lg: 18px;
+      --transition: 0.3s ease;
+      --shadow:      0 4px 20px rgba(15,31,61,0.08);
+      --shadow-hover: 0 10px 36px rgba(15,31,61,0.15);
+
+      --container: 1200px;
+      --gutter:    24px;
+    }
+
+    /* ==========================================
+       2. Reset & Base
+    ========================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); color: var(--color-text); background: var(--color-bg); line-height: 1.6; }
+    img  { max-width: 100%; display: block; }
+    a    { color: inherit; text-decoration: none; }
+    ul   { list-style: none; }
+
+    /* ==========================================
+       3. Typography
+    ========================================== */
+    h1 { font-family: var(--font-display); font-size: clamp(2.8rem,7vw,5.5rem); line-height: 1.0; font-weight: 800; text-transform: uppercase; }
+    h2 { font-family: var(--font-display); font-size: clamp(2rem,4.5vw,3.2rem); line-height: 1.1; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; }
+    h3 { font-family: var(--font-body); font-size: clamp(1.05rem,2.5vw,1.25rem); line-height: 1.3; font-weight: 700; }
+    p  { font-size: 1rem; line-height: 1.75; color: var(--color-text-muted); }
+    .lead { font-size: clamp(1rem,2vw,1.2rem); line-height: 1.65; }
+    .section-label {
+      font-family: var(--font-body);
+      font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.12em;
+      color: var(--color-accent);
+      display: block; margin-bottom: 12px;
+    }
+
+    /* ==========================================
+       4. Layout & Utilities
+    ========================================== */
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
+
+    section { padding: 72px 0; }
+    @media (min-width: 768px)  { section { padding: 96px 0; } }
+    @media (min-width: 1024px) { section { padding: 112px 0; } }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr; gap: 28px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: 1fr; gap: 20px; }
+
+    @media (min-width: 640px)  { .grid-4 { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 768px)  { .grid-2 { grid-template-columns: repeat(2,1fr); } .grid-3 { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1024px) { .grid-3 { grid-template-columns: repeat(3,1fr); } .grid-4 { grid-template-columns: repeat(4,1fr); } }
+
+    .text-center { text-align: center; }
+    .section-header { margin-bottom: 52px; }
+    .section-header p { max-width: 580px; margin-top: 14px; }
+    .section-header.text-center p { margin-left: auto; margin-right: auto; }
+
+    /* ==========================================
+       5. Buttons
+    ========================================== */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 30px; border-radius: var(--radius);
+      font-family: var(--font-body); font-weight: 700; font-size: 0.95rem;
+      cursor: pointer; transition: var(--transition); border: none; white-space: nowrap;
+    }
+    .btn-primary  { background: var(--color-accent); color: #fff; }
+    .btn-primary:hover { background: var(--color-accent-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(249,115,22,0.4); }
+
+    .btn-outline  { border: 2px solid rgba(255,255,255,0.6); color: #fff; background: transparent; }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.12); }
+
+    .btn-white { background: #fff; color: var(--color-accent); }
+    .btn-white:hover { background: #fff3ee; transform: translateY(-2px); }
+
+    .btn-ghost  { border: 2px solid rgba(255,255,255,0.5); color: #fff; background: transparent; }
+    .btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.1); }
+
+    /* ==========================================
+       6. WhatsApp float
+    ========================================== */
+    .whatsapp-float {
+      position: fixed; bottom: 28px; right: 28px; z-index: 998;
+      width: 58px; height: 58px; background: #25d366; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,0.45); transition: var(--transition);
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+    .whatsapp-float svg { width: 30px; height: 30px; fill: #fff; }
+
+    @keyframes pulse-wa {
+      0%,100% { box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
+      50%      { box-shadow: 0 6px 32px rgba(37,211,102,0.72); }
+    }
+    .whatsapp-float { animation: pulse-wa 2.5s ease-in-out infinite; }
+
+    /* ==========================================
+       7. Navigation
+    ========================================== */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 18px 0;
+      transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+    }
+    nav.scrolled {
+      background: rgba(15,31,61,0.97);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.25);
+      padding: 12px 0;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo {
+      font-family: var(--font-display); font-size: 1.65rem; font-weight: 800;
+      text-transform: uppercase; color: #fff; letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--color-accent); }
+
+    .nav-links { display: none; gap: 32px; align-items: center; }
+    @media (min-width: 768px) { .nav-links { display: flex; } }
+    .nav-links a { color: rgba(255,255,255,0.8); font-size: 0.9rem; font-weight: 600; transition: color var(--transition); }
+    .nav-links a:hover { color: #fff; }
+
+    .nav-cta { display: none; }
+    @media (min-width: 960px) { .nav-cta { display: inline-flex; } }
+
+    .nav-hamburger {
+      display: flex; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 4px; background: none; border: none;
+    }
+    @media (min-width: 768px) { .nav-hamburger { display: none; } }
+    .nav-hamburger span { display: block; width: 24px; height: 2px; background: #fff; transition: var(--transition); }
+
+    /* Mobile menu */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; background: var(--color-primary);
+      z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { color: #fff; font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; text-transform: uppercase; transition: color var(--transition); }
+    .mobile-menu a:hover { color: var(--color-accent); }
+    .mobile-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; color: #fff; font-size: 2.2rem; cursor: pointer; line-height: 1;
+    }
+
+    /* ==========================================
+       8. Hero
+    ========================================== */
+    .hero {
+      min-height: 100vh; background: var(--color-primary);
+      display: flex; align-items: center; position: relative; overflow: hidden; padding-top: 80px;
+    }
+    .hero-bg-glow {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(circle at 78% 18%, rgba(249,115,22,0.13) 0%, transparent 48%),
+        radial-gradient(circle at 12% 82%, rgba(30,58,110,0.55) 0%, transparent 50%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1fr; gap: 52px; align-items: center;
+    }
+    @media (min-width: 1024px) { .hero-inner { grid-template-columns: 1fr 400px; } }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(249,115,22,0.14); border: 1px solid rgba(249,115,22,0.32);
+      border-radius: 100px; padding: 8px 18px; margin-bottom: 28px;
+      color: #ffb380; font-size: 0.8rem; font-weight: 700;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .hero-badge svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .hero h1 { color: #fff; margin-bottom: 8px; }
+    .hero h1 span { color: var(--color-accent); }
+
+    .hero-sub {
+      font-size: clamp(1rem,2.3vw,1.2rem); color: rgba(255,255,255,0.62);
+      font-weight: 500; max-width: 540px; margin-bottom: 36px; line-height: 1.7;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 52px; }
+
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 32px;
+      padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .stat-num {
+      font-family: var(--font-display); font-size: 2.5rem; font-weight: 800;
+      color: #fff; display: block; line-height: 1;
+    }
+    .stat-num span { color: var(--color-accent); }
+    .stat-label {
+      font-size: 0.78rem; color: rgba(255,255,255,0.48); font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; display: block;
+    }
+
+    /* hero card (desktop) */
+    .hero-card { display: none; }
+    @media (min-width: 1024px) { .hero-card { display: block; } }
+
+    .hero-card-inner {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg); padding: 36px; position: relative;
+    }
+    .hero-card-icon {
+      width: 68px; height: 68px; background: var(--color-accent); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    }
+    .hero-card-icon svg { width: 34px; height: 34px; stroke: #fff; fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .hero-card-title {
+      font-family: var(--font-display); font-size: 1.4rem; font-weight: 700;
+      color: #fff; text-transform: uppercase; margin-bottom: 20px;
+    }
+    .hero-card-list li {
+      display: flex; align-items: center; gap: 10px;
+      color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 500;
+      padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .hero-card-list li:last-child { border-bottom: none; }
+    .hero-card-list li svg { width: 15px; height: 15px; stroke: var(--color-accent); fill: none; stroke-width: 2.5; flex-shrink: 0; }
+
+    .hero-cert {
+      position: absolute; bottom: -20px; right: -16px;
+      background: #fff; border-radius: var(--radius); padding: 13px 17px;
+      display: flex; align-items: center; gap: 12px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.22);
+    }
+    .cert-icon {
+      width: 36px; height: 36px; background: var(--color-accent); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .cert-icon svg { width: 20px; height: 20px; stroke: #fff; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .cert-text { font-size: 0.78rem; font-weight: 700; color: var(--color-primary); line-height: 1.3; }
+    .cert-text span { display: block; font-weight: 400; color: var(--color-text-muted); font-size: 0.71rem; }
+
+    /* hero animations */
+    @keyframes hFade { from { opacity:0; transform: translateY(22px); } to { opacity:1; transform: none; } }
+    .hero-badge  { animation: hFade 0.6s ease 0.10s both; }
+    .hero h1     { animation: hFade 0.7s ease 0.22s both; }
+    .hero-sub    { animation: hFade 0.7s ease 0.36s both; }
+    .hero-actions{ animation: hFade 0.7s ease 0.50s both; }
+    .hero-stats  { animation: hFade 0.7s ease 0.65s both; }
+    .hero-card   { animation: hFade 0.9s ease 0.45s both; }
+
+    /* ==========================================
+       9. Brands bar
+    ========================================== */
+    .brands-bar {
+      padding: 32px 0;
+      background: var(--color-bg-alt);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
+    }
+    .brands-inner {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 14px 28px; justify-content: center;
+    }
+    .brands-label {
+      font-size: 0.76rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--color-text-muted); white-space: nowrap;
+    }
+    .brands-list { display: flex; flex-wrap: wrap; gap: 10px 24px; align-items: center; justify-content: center; }
+    .brands-list span {
+      font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+      letter-spacing: 0.06em; color: #b0bdd0; text-transform: uppercase;
+      transition: color var(--transition);
+    }
+    .brands-list span:hover { color: var(--color-primary); }
+
+    /* ==========================================
+       10. Serviços
+    ========================================== */
+    .services-section { background: var(--color-bg); }
+
+    .service-card {
+      background: #fff; border-radius: var(--radius-lg);
+      padding: 32px 28px; border: 1px solid var(--color-border);
+      transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: var(--color-accent);
+      transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
+    }
+    .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: transparent; }
+    .service-card:hover::after { transform: scaleX(1); }
+
+    .svc-icon {
+      width: 52px; height: 52px; background: rgba(249,115,22,0.1); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+      transition: background var(--transition);
+    }
+    .service-card:hover .svc-icon { background: var(--color-accent); }
+    .svc-icon svg { width: 26px; height: 26px; stroke: var(--color-accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: stroke var(--transition); }
+    .service-card:hover .svc-icon svg { stroke: #fff; }
+    .service-card h3 { font-size: 1.08rem; color: var(--color-primary); margin-bottom: 10px; }
+    .service-card p  { font-size: 0.9rem; }
+
+    /* ==========================================
+       11. Como Funciona
+    ========================================== */
+    .how-section { background: var(--color-bg-alt); }
+    .steps { display: grid; grid-template-columns: 1fr; gap: 28px; }
+    @media (min-width: 640px)  { .steps { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1024px) { .steps { grid-template-columns: repeat(4,1fr); } }
+
+    .step { position: relative; }
+    .step-num {
+      font-family: var(--font-display); font-size: 4rem; font-weight: 800;
+      color: rgba(15,31,61,0.07); line-height: 1; margin-bottom: 14px; display: block;
+    }
+    .step-icon {
+      width: 52px; height: 52px; background: var(--color-primary); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
+    }
+    .step-icon svg { width: 24px; height: 24px; stroke: var(--color-accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .step h3 { font-size: 1rem; color: var(--color-primary); margin-bottom: 8px; }
+    .step p  { font-size: 0.88rem; }
+
+    /* ==========================================
+       12. Sobre
+    ========================================== */
+    .about-section { background: var(--color-bg); }
+    .about-inner {
+      display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center;
+    }
+    @media (min-width: 1024px) { .about-inner { grid-template-columns: 1fr 1fr; } }
+
+    .about-visual { position: relative; }
+    .about-photo {
+      width: 100%; max-width: 420px; aspect-ratio: 4/5;
+      border-radius: var(--radius-lg); margin: 0 auto;
+      position: relative; overflow: hidden;
+      background: var(--color-primary);
+    }
+    .about-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      display: block;
+    }
+    .about-photo::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 30%;
+      background: linear-gradient(to top, rgba(15,31,61,0.55), transparent);
+      pointer-events: none;
+    }
+
+    .about-badge {
+      position: absolute; top: 24px; right: -10px;
+      background: var(--color-accent); color: #fff; border-radius: var(--radius);
+      padding: 12px 18px; text-align: center;
+      box-shadow: 0 6px 20px rgba(249,115,22,0.42);
+    }
+    @media (max-width: 1023px) { .about-badge { right: 0; } }
+    .about-badge-num   { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; display: block; line-height: 1; }
+    .about-badge-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; opacity: 0.88; margin-top: 3px; }
+
+    .about-content p { margin-bottom: 18px; }
+    .about-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .about-tag {
+      display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 16px; background: var(--color-primary);
+      color: #fff; border-radius: 100px; font-size: 0.82rem; font-weight: 600;
+    }
+    .about-tag svg { width: 13px; height: 13px; stroke: var(--color-accent); fill: none; stroke-width: 2.5; }
+
+    /* ==========================================
+       13. Diferenciais
+    ========================================== */
+    .features-section { background: var(--color-primary); }
+    .features-section .section-label { color: var(--color-accent); }
+    .features-section h2 { color: #fff; }
+    .features-section .section-header p { color: rgba(255,255,255,0.58); }
+
+    .feature-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius-lg); padding: 32px 28px; transition: var(--transition);
+    }
+    .feature-card:hover {
+      background: rgba(255,255,255,0.08); border-color: rgba(249,115,22,0.38);
+      transform: translateY(-4px);
+    }
+    .feat-icon {
+      width: 52px; height: 52px; background: rgba(249,115,22,0.14); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    }
+    .feat-icon svg { width: 26px; height: 26px; stroke: var(--color-accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .feature-card h3 { font-size: 1.05rem; color: #fff; margin-bottom: 10px; }
+    .feature-card p  { color: rgba(255,255,255,0.58); font-size: 0.9rem; }
+
+    /* ==========================================
+       14. Depoimentos
+    ========================================== */
+    .testimonials-section { background: var(--color-bg); }
+    .testimonial-card {
+      background: var(--color-bg-alt); border-radius: var(--radius-lg);
+      padding: 32px 28px; border: 1px solid var(--color-border); transition: var(--transition);
+    }
+    .testimonial-card:hover { box-shadow: var(--shadow-hover); border-color: rgba(249,115,22,0.22); }
+    .stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .stars svg { width: 15px; height: 15px; fill: var(--color-accent); }
+    .quote { font-family: Georgia, serif; font-size: 4.5rem; line-height: 0.5; color: var(--color-accent); opacity: 0.28; display: block; margin-bottom: 14px; }
+    .t-text { font-size: 0.97rem; line-height: 1.75; color: var(--color-text); font-style: italic; margin-bottom: 24px; }
+    .t-author { display: flex; align-items: center; gap: 14px; }
+    .t-avatar {
+      width: 44px; height: 44px; border-radius: 50%; background: var(--color-primary);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: #fff;
+    }
+    .t-name    { font-weight: 700; font-size: 0.92rem; color: var(--color-primary); }
+    .t-context { font-size: 0.78rem; color: var(--color-text-muted); margin-top: 2px; }
+
+    /* ==========================================
+       15. CTA Final
+    ========================================== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--color-accent) 0%, #ea580c 100%);
+      padding: 88px 0;
+    }
+    .cta-section h2 { color: #fff; margin-bottom: 16px; }
+    .cta-section > .container > p { color: rgba(255,255,255,0.88); font-size: 1.1rem; max-width: 540px; margin: 0 auto 36px; }
+    .cta-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+    .cta-info {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 28px;
+      margin-top: 44px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.22);
+    }
+    .cta-info-item { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,0.84); font-size: 0.9rem; font-weight: 600; }
+    .cta-info-item svg { width: 17px; height: 17px; stroke: rgba(255,255,255,0.7); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* ==========================================
+       16. Footer
+    ========================================== */
+    .footer { background: #080f1e; padding: 60px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 40px; margin-bottom: 52px; }
+    @media (min-width: 640px)  { .footer-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr; } }
+
+    .footer-logo { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: #fff; text-transform: uppercase; margin-bottom: 14px; }
+    .footer-logo span { color: var(--color-accent); }
+    .footer-tagline { color: rgba(255,255,255,0.48); font-size: 0.88rem; line-height: 1.65; max-width: 300px; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 12px; }
+    .soc-link {
+      width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.14); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; transition: var(--transition);
+    }
+    .soc-link:hover { border-color: var(--color-accent); background: rgba(249,115,22,0.14); }
+    .soc-link svg { width: 17px; height: 17px; transition: stroke var(--transition); }
+    .soc-link:hover svg { stroke: var(--color-accent) !important; }
+
+    .footer-col-title { font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.38); margin-bottom: 18px; }
+    .footer-links { display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { color: rgba(255,255,255,0.62); font-size: 0.9rem; transition: color var(--transition); }
+    .footer-links a:hover { color: #fff; }
+
+    .footer-contact-item { display: flex; gap: 10px; color: rgba(255,255,255,0.62); font-size: 0.87rem; line-height: 1.55; margin-bottom: 13px; }
+    .footer-contact-item svg { width: 15px; height: 15px; stroke: var(--color-accent); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; margin-top: 3px; }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08); padding-top: 28px;
+      display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center;
+    }
+    .footer-copy  { color: rgba(255,255,255,0.32); font-size: 0.82rem; }
+    .footer-made  { color: rgba(255,255,255,0.32); font-size: 0.82rem; }
+    .footer-made a { color: rgba(249,115,22,0.7); transition: color var(--transition); }
+    .footer-made a:hover { color: var(--color-accent); }
+
+    /* ==========================================
+       17. Scroll Animations
+    ========================================== */
+    .fade-in-up {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-in-up.visible { opacity: 1; transform: none; }
+    .fade-in-up:nth-child(2) { transition-delay: 0.10s; }
+    .fade-in-up:nth-child(3) { transition-delay: 0.20s; }
+    .fade-in-up:nth-child(4) { transition-delay: 0.30s; }
+    .fade-in-up:nth-child(5) { transition-delay: 0.40s; }
+    .fade-in-up:nth-child(6) { transition-delay: 0.50s; }
+
+    /* ==========================================
+       18. Mobile polish
+    ========================================== */
+    @media (max-width: 480px) {
+      .hero-stats { gap: 22px; }
+      .btn { padding: 12px 22px; font-size: 0.9rem; }
+      .cta-section { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       WhatsApp Float
+  ========================================== -->
+  <a href="https://wa.me/5511984075403?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Conversar no WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+
+  <!-- ==========================================
+       Mobile Menu
+  ========================================== -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menu de navegação">
+    <button class="mobile-close" onclick="closeMobileMenu()" aria-label="Fechar menu">&times;</button>
+    <a href="#servicos"    onclick="closeMobileMenu()">Serviços</a>
+    <a href="#como-funciona" onclick="closeMobileMenu()">Como Funciona</a>
+    <a href="#sobre"       onclick="closeMobileMenu()">Sobre</a>
+    <a href="#diferenciais" onclick="closeMobileMenu()">Diferenciais</a>
+    <a href="#depoimentos" onclick="closeMobileMenu()">Depoimentos</a>
+    <a href="https://wa.me/5511984075403?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" target="_blank" onclick="closeMobileMenu()">Orçamento</a>
+  </div>
+
+  <!-- ==========================================
+       Navigation
+  ========================================== -->
+  <nav id="navbar" aria-label="Navegação principal">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">Edizo<span>tec</span></a>
+        <ul class="nav-links" role="list">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#como-funciona">Como Funciona</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+        </ul>
+        <a href="https://wa.me/5511984075403?text=Ol%C3%A1%2C%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" target="_blank" rel="noopener" class="btn btn-primary nav-cta">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Pedir Orçamento
+        </a>
+        <button class="nav-hamburger" onclick="openMobileMenu()" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ==========================================
+       Hero
+  ========================================== -->
+  <header class="hero" id="inicio">
+    <div class="hero-bg-glow"></div>
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- left -->
+        <div>
+          <div class="hero-badge">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Certificado SENAI &nbsp;&middot;&nbsp; +15 Anos no Mercado
+          </div>
+          <h1>Assistência<br><span>Técnica</span><br>em SP</h1>
+          <p class="hero-sub">Consertamos geladeiras, máquinas de lavar e fogões com diagnóstico preciso, atendimento a domicílio e garantia de 90 dias em todos os serviços.</p>
+          <div class="hero-actions">
+            <a href="https://wa.me/5511984075403?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" target="_blank" rel="noopener" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+              Solicitar Orçamento
+            </a>
+            <a href="#servicos" class="btn btn-outline">Ver Serviços</a>
+          </div>
+          <div class="hero-stats">
+            <div>
+              <span class="stat-num">15<span>+</span></span>
+              <span class="stat-label">Anos de experiência</span>
+            </div>
+            <div>
+              <span class="stat-num">90</span>
+              <span class="stat-label">Dias de garantia</span>
+            </div>
+            <div>
+              <span class="stat-num">8<span>+</span></span>
+              <span class="stat-label">Marcas atendidas</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- right card (desktop only) -->
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-card-icon">
+              <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
+            </div>
+            <div class="hero-card-title">Eletrodomésticos</div>
+            <ul class="hero-card-list">
+              <li>
+                <svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Geladeiras e Freezers
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Máquinas de Lavar e Lava e Seca
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Fogões GLP e GN
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Frigobares
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Instalação de Linha Branca
+              </li>
+            </ul>
+            <div class="hero-cert">
+              <div class="cert-icon">
+                <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-.45 3.767 3.745 3.745 0 01-3.582 1.43 3.745 3.745 0 01-2.993 1.483 3.745 3.745 0 01-2.992-1.483 3.745 3.745 0 01-3.583-1.43 3.745 3.745 0 01-.45-3.767A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 01.45-3.767 3.745 3.745 0 013.582-1.43 3.746 3.746 0 012.993-1.483 3.746 3.746 0 012.992 1.483 3.745 3.745 0 013.583 1.43c.495.604.741 1.357.747 2.117V12z"/></svg>
+              </div>
+              <div class="cert-text">Certificado SENAI<span>Técnico qualificado</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       Marcas
+  ========================================== -->
+  <div class="brands-bar">
+    <div class="container">
+      <div class="brands-inner">
+        <span class="brands-label">Marcas atendidas</span>
+        <div class="brands-list">
+          <span>Samsung</span>
+          <span>LG</span>
+          <span>Brastemp</span>
+          <span>Electrolux</span>
+          <span>Consul</span>
+          <span>Midea</span>
+          <span>Philco</span>
+          <span>Panasonic</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       Serviços
+  ========================================== -->
+  <section class="services-section" id="servicos">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-label">O que fazemos</span>
+        <h2>Serviços Especializados</h2>
+        <p>Diagnóstico preciso e reparo eficiente para os principais eletrodomésticos da sua casa ou empresa, com peças de qualidade e garantia em tudo.</p>
+      </div>
+      <div class="grid-3">
+
+        <div class="service-card fade-in-up">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="5" y="2" width="14" height="20" rx="2"/>
+              <line x1="5" y1="10" x2="19" y2="10"/>
+              <circle cx="12" cy="16" r="1" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Geladeiras e Freezers</h3>
+          <p>Compressores, termostatos, gás refrigerante, borrachas de porta e problemas elétricos. Diagnóstico no mesmo dia.</p>
+        </div>
+
+        <div class="service-card fade-in-up">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <circle cx="12" cy="12" r="4"/>
+              <line x1="12" y1="3" x2="12" y2="7"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+              <line x1="3" y1="12" x2="7" y2="12"/>
+              <line x1="17" y1="12" x2="21" y2="12"/>
+            </svg>
+          </div>
+          <h3>Máquinas de Lavar</h3>
+          <p>Reparos em máquinas de lavar e lava e seca — agitadores, bombas, módulos eletrônicos, vazamentos e vibração excessiva.</p>
+        </div>
+
+        <div class="service-card fade-in-up">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 8h16M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2M4 8v10a2 2 0 002 2h12a2 2 0 002-2V8"/>
+              <circle cx="8" cy="13.5" r="1.2" fill="currentColor" stroke="none"/>
+              <circle cx="12" cy="13.5" r="1.2" fill="currentColor" stroke="none"/>
+              <circle cx="16" cy="13.5" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </div>
+          <h3>Conversão de Fogões</h3>
+          <p>Conversão de fogões GLP para GN (gás natural) e vice-versa. Troca de injetores, regulagem de chama e teste de segurança.</p>
+        </div>
+
+        <div class="service-card fade-in-up">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
+              <path d="M8 12h8M12 8v8"/>
+            </svg>
+          </div>
+          <h3>Mangueiras e Reguladores</h3>
+          <p>Troca e ajuste de mangueiras de gás e reguladores de pressão. Serviço com teste de estanqueidade e total segurança.</p>
+        </div>
+
+        <div class="service-card fade-in-up">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          </div>
+          <h3>Frigobares</h3>
+          <p>Manutenção e reparo de frigobares para uso doméstico, hoteleiro e empresarial. Solução rápida com atendimento a domicílio.</p>
+        </div>
+
+        <div class="service-card fade-in-up">
+          <div class="svc-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/>
+            </svg>
+          </div>
+          <h3>Instalação de Linha Branca</h3>
+          <p>Instalação correta e segura de geladeiras, fogões e máquinas de lavar. Inclui nivelamento, conexões e teste de funcionamento.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       Como Funciona
+  ========================================== -->
+  <section class="how-section" id="como-funciona">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-label">Simples e sem complicação</span>
+        <h2>Como Funciona</h2>
+        <p>Do primeiro contato ao serviço concluído, tudo fica claro e sem surpresas.</p>
+      </div>
+      <div class="steps">
+        <div class="step fade-in-up">
+          <span class="step-num">01</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.94a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <h3>Entre em Contato</h3>
+          <p>Mande mensagem pelo WhatsApp descrevendo o problema. Resposta em poucos minutos.</p>
+        </div>
+        <div class="step fade-in-up">
+          <span class="step-num">02</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          </div>
+          <h3>Agendamento</h3>
+          <p>Combinamos o melhor horário para você. Atendimento de segunda a sexta, das 9h às 17h30.</p>
+        </div>
+        <div class="step fade-in-up">
+          <span class="step-num">03</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24"><path d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z"/></svg>
+          </div>
+          <h3>Diagnóstico e Orçamento</h3>
+          <p>O técnico vai até você, identifica o problema e apresenta o orçamento completo antes de qualquer serviço.</p>
+        </div>
+        <div class="step fade-in-up">
+          <span class="step-num">04</span>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <h3>Serviço com Garantia</h3>
+          <p>Aprovado o orçamento, o conserto é feito na hora. Todos os serviços têm 90 dias de garantia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       Sobre
+  ========================================== -->
+  <section class="about-section" id="sobre">
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-visual fade-in-up">
+          <div class="about-photo">
+            <img src="foto-edi.png" alt="Edmilson Zonatto — Técnico Edizotec">
+          </div>
+          <div class="about-badge">
+            <span class="about-badge-num">15+</span>
+            <span class="about-badge-label">anos de experiência</span>
+          </div>
+        </div>
+
+        <div class="about-content fade-in-up">
+          <span class="section-label">Quem está por trás</span>
+          <h2>Sou o Edi — e Consertar é o Meu Trabalho</h2>
+          <p>A Edizotec nasceu do desejo de oferecer assistência técnica com honestidade — sem diagnóstico enrolado, sem cobrança surpresa e sem fazer o cliente esperar por semanas.</p>
+          <p>Com formação técnica pelo SENAI e mais de 15 anos de experiência nas ruas de São Paulo, desenvolvi expertise nas principais marcas do mercado. Cada atendimento é feito por mim, com uniforme, as ferramentas certas e total comprometimento com a solução.</p>
+          <p>Aqui você recebe o orçamento completo antes de qualquer trabalho ser feito. E quando o serviço termina, ele tem 90 dias de garantia.</p>
+          <div class="about-tags">
+            <span class="about-tag">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Certificado SENAI
+            </span>
+            <span class="about-tag">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Garantia 90 dias
+            </span>
+            <span class="about-tag">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Atendimento a domicílio
+            </span>
+            <span class="about-tag">
+              <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Técnico uniformizado
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       Diferenciais
+  ========================================== -->
+  <section class="features-section" id="diferenciais">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-label">Por que nos escolher</span>
+        <h2>Nossos Diferenciais</h2>
+        <p>Pontualidade, transparência e técnica de quem realmente domina o ofício.</p>
+      </div>
+      <div class="grid-4">
+        <div class="feature-card fade-in-up">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3>Pontualidade Garantida</h3>
+          <p>Horário combinado é cumprido. Respeitamos o seu tempo sem enrolação ou espera desnecessária.</p>
+        </div>
+        <div class="feature-card fade-in-up">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3>Garantia de 90 Dias</h3>
+          <p>Todo serviço e peça trocada têm 90 dias de garantia. Transparência e segurança do início ao fim.</p>
+        </div>
+        <div class="feature-card fade-in-up">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          </div>
+          <h3>Certificado SENAI</h3>
+          <p>Formação técnica reconhecida. Diagnóstico correto na primeira visita — sem achismo, sem tentativa e erro.</p>
+        </div>
+        <div class="feature-card fade-in-up">
+          <div class="feat-icon">
+            <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
+          <h3>Orçamento Transparente</h3>
+          <p>Você recebe o orçamento completo antes de qualquer serviço. Clareza no preço, sem cobranças surpresa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       Depoimentos
+  ========================================== -->
+  <section class="testimonials-section" id="depoimentos">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-label">Clientes satisfeitos</span>
+        <h2>O Que Dizem Por Aí</h2>
+        <p>A reputação construída atendimento por atendimento, em São Paulo.</p>
+      </div>
+      <div class="grid-3">
+
+        <div class="testimonial-card fade-in-up">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="quote">"</span>
+          <p class="t-text">Excelente serviço. Atendimento e solução no mesmo dia. Muito satisfeita com a rapidez e o profissionalismo.</p>
+          <div class="t-author">
+            <div class="t-avatar">ES</div>
+            <div>
+              <div class="t-name">Elisangela Soares</div>
+              <div class="t-context">Cliente — São Paulo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in-up">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="quote">"</span>
+          <p class="t-text">Profissionalismo e sinceridade com o cliente. O Edi explicou tudo o que estava acontecendo antes de fazer qualquer coisa. Recomendo sem hesitar.</p>
+          <div class="t-author">
+            <div class="t-avatar">GR</div>
+            <div>
+              <div class="t-name">Giovana Rodrigues</div>
+              <div class="t-context">Cliente — São Paulo</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card fade-in-up">
+          <div class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+          <span class="quote">"</span>
+          <p class="t-text">Sempre atendida rapidamente, são muito atenciosos e o serviço é de qualidade. Já indiquei para vários vizinhos e todo mundo ficou satisfeito.</p>
+          <div class="t-author">
+            <div class="t-avatar">RA</div>
+            <div>
+              <div class="t-name">Rosangela Andrade</div>
+              <div class="t-context">Cliente recorrente — São Paulo</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       CTA Final
+  ========================================== -->
+  <section class="cta-section">
+    <div class="container text-center">
+      <span class="section-label" style="color:rgba(255,255,255,0.72)">Pronto para resolver?</span>
+      <h2>Seu Eletrodoméstico<br>Consertado Hoje</h2>
+      <p>Atendemos toda São Paulo. Envie uma mensagem agora e receba seu orçamento sem compromisso.</p>
+      <div class="cta-actions">
+        <a href="https://wa.me/5511984075403?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento!" target="_blank" rel="noopener" class="btn btn-white">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="#f97316"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          Falar pelo WhatsApp
+        </a>
+        <a href="tel:11984075403" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.94a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          Ligar agora
+        </a>
+      </div>
+      <div class="cta-info">
+        <div class="cta-info-item">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Seg–Sex · 9h às 17h30
+        </div>
+        <div class="cta-info-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          São Paulo — SP
+        </div>
+        <div class="cta-info-item">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Garantia de 90 dias
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       Footer
+  ========================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div>
+          <div class="footer-logo">Edizo<span>tec</span></div>
+          <p class="footer-tagline">Assistência técnica especializada em refrigeração e linha branca. Mais de 15 anos resolvendo em São Paulo.</p>
+          <div class="footer-social">
+            <a href="https://wa.me/5511984075403" target="_blank" rel="noopener" class="soc-link" aria-label="WhatsApp">
+              <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.6)" stroke="none" width="17" height="17"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+            </a>
+            <a href="https://instagram.com" target="_blank" rel="noopener" class="soc-link" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Navegação</div>
+          <ul class="footer-links">
+            <li><a href="#servicos">Serviços</a></li>
+            <li><a href="#como-funciona">Como Funciona</a></li>
+            <li><a href="#sobre">Sobre nós</a></li>
+            <li><a href="#diferenciais">Diferenciais</a></li>
+            <li><a href="#depoimentos">Depoimentos</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Contato</div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.82a19.79 19.79 0 01-3.07-8.68A2 2 0 012 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.94a16 16 0 006.06 6.06l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            (11) 98407-5403
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rua Giulo Carpi, 79 — Vila Caraguatá, São Paulo — SP
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Seg–Sex, 9h às 17h30
+          </div>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 Edizotec Refrigeração. Todos os direitos reservados.</span>
+        <span class="footer-made">Site desenvolvido por <a href="https://agencialogos.com.br" target="_blank" rel="noopener">Agência Logos</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Mobile menu
+    function openMobileMenu() {
+      document.getElementById('mobileMenu').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMobileMenu() {
+      document.getElementById('mobileMenu').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
