@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agência Logos — Mobile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ink:#0A0A0F;--ink2:#1A1A2E;--accent:#5B3FF8;--accent-light:#8B6FFF;
+  --surface:#F7F6F2;--white:#fff;--muted:rgba(10,10,15,.42);--border:rgba(10,10,15,.08);
+  --f-display:'Cormorant Garamond',serif;--f-body:'Instrument Sans',sans-serif;
+}
+html{font-size:16px}
+body{font-family:var(--f-body);color:var(--ink);background:var(--surface);overflow-x:hidden}
+
+/* NAV MOBILE */
+.nav-m{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;
+  background:rgba(247,246,242,.93);
+  backdrop-filter:blur(16px);
+  border-bottom:0.5px solid var(--border);
+}
+.nav-m-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-m-name{font-family:var(--f-display);font-size:18px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);line-height:1}
+.nav-m-sub{font-size:7px;letter-spacing:.22em;color:rgba(91,63,248,.65);text-transform:uppercase}
+.nav-m-cta{font-size:11px;font-weight:500;color:#fff;background:var(--ink);padding:9px 16px;border-radius:6px;text-decoration:none}
+
+/* HERO MOBILE */
+.hero-m{
+  padding:100px 24px 64px;
+  background:var(--surface);
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  gap:0;
+}
+.hero-m-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:10px;font-weight:500;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:28px;
+}
+.hero-m-eyebrow::before{content:'';width:18px;height:1px;background:var(--accent)}
+.hero-m-h1{
+  font-family:var(--f-display);font-size:48px;font-weight:300;
+  line-height:1.06;letter-spacing:-.025em;color:var(--ink);margin-bottom:20px;
+}
+.hero-m-h1 strong{font-weight:600}
+.hero-m-h1 em{font-style:italic;color:var(--accent-light)}
+.hero-m-sub{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:36px}
+.hero-m-cta{
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:500;color:#fff;
+  background:var(--accent);padding:16px 28px;border-radius:10px;
+  text-decoration:none;margin-bottom:16px;
+}
+.hero-m-secondary{
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;color:var(--ink);gap:6px;text-decoration:none;
+}
+.hero-m-secondary::after{content:'→';color:var(--accent)}
+
+/* STATS STRIP */
+.stats-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:0;background:var(--ink);margin-top:48px;border-radius:12px;overflow:hidden;
+}
+.stat-m{padding:24px 16px;text-align:center;border-right:0.5px solid rgba(255,255,255,.06)}
+.stat-m:last-child{border:none}
+.stat-m label{display:block;font-size:9px;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.1em;margin-bottom:4px}
+.stat-m strong{font-family:var(--f-display);font-size:28px;font-weight:600;color:#fff;letter-spacing:-.02em}
+
+/* DASH CARD MOBILE */
+.dash-m{
+  margin:0 24px;margin-top:-16px;
+  background:var(--ink2);border-radius:20px;padding:28px;
+  border:0.5px solid rgba(255,255,255,.08);
+  position:relative;z-index:2;
+}
+.dash-m-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.dash-m-title{font-size:10px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.1em}
+.dash-m-badge{font-size:9px;color:rgba(139,111,255,.9);background:rgba(91,63,248,.15);padding:3px 9px;border-radius:20px}
+.dash-m-num{font-family:var(--f-display);font-size:48px;font-weight:600;color:#fff;letter-spacing:-.03em;line-height:1}
+.dash-m-num span{color:var(--accent-light)}
+.dash-m-label{font-size:11px;color:rgba(255,255,255,.3);margin-top:4px;margin-bottom:20px}
+.bar-m{display:grid;grid-template-columns:56px 1fr 32px;gap:8px;align-items:center;margin-bottom:8px}
+.bar-m-name{font-size:11px;color:rgba(255,255,255,.4)}
+.bar-m-track{height:3px;background:rgba(255,255,255,.07);border-radius:2px}
+.bar-m-fill{height:100%;background:linear-gradient(90deg,#5B3FF8,#8B6FFF);border-radius:2px}
+.bar-m-val{font-size:10px;color:rgba(255,255,255,.4);text-align:right}
+
+/* MANIFESTO MOBILE */
+.manifesto-m{padding:64px 24px;background:var(--white);border-top:0.5px solid var(--border)}
+.manifesto-m-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
+.manifesto-m-quote{font-family:var(--f-display);font-size:15px;font-weight:300;font-style:italic;color:var(--accent);margin-bottom:28px;line-height:1.5}
+.manifesto-m-body{font-family:var(--f-display);font-size:26px;font-weight:300;line-height:1.38;letter-spacing:-.015em}
+.manifesto-m-body strong{font-weight:600}
+.manifesto-m-body em{font-style:italic;color:var(--accent-light)}
+
+/* SERVICES MOBILE */
+.services-m{padding:64px 0;background:var(--surface)}
+.services-m-head{padding:0 24px;margin-bottom:40px}
+.services-m-title{font-family:var(--f-display);font-size:36px;font-weight:300;letter-spacing:-.02em;margin-bottom:8px}
+.services-m-title strong{font-weight:600}
+.services-m-list{display:flex;flex-direction:column;gap:0}
+.svc-m{
+  background:var(--white);padding:32px 24px;
+  border-bottom:0.5px solid var(--border);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+}
+.svc-m-left{flex:1}
+.svc-m-num{font-size:10px;color:rgba(10,10,15,.2);font-weight:600;letter-spacing:.08em;margin-bottom:8px}
+.svc-m-name{font-size:16px;font-weight:500;margin-bottom:8px;letter-spacing:-.01em}
+.svc-m-desc{font-size:13px;color:var(--muted);line-height:1.65}
+.svc-m-icon{
+  width:36px;height:36px;border-radius:8px;background:var(--ink);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.svc-m-icon.accent{background:var(--accent)}
+.svc-m-icon svg{width:18px;height:18px;fill:none;stroke:#fff;stroke-width:1.5;stroke-linecap:round}
+
+/* PROOF MOBILE */
+.proof-m{padding:64px 24px;background:var(--ink)}
+.proof-m-eyebrow{font-size:10px;color:rgba(139,111,255,.7);text-transform:uppercase;letter-spacing:.12em;margin-bottom:20px}
+.proof-m-title{font-family:var(--f-display);font-size:40px;font-weight:300;color:#fff;line-height:1.1;letter-spacing:-.025em;margin-bottom:40px}
+.proof-m-title strong{font-weight:600}
+.pm-m{background:rgba(255,255,255,.04);border:0.5px solid rgba(255,255,255,.07);border-radius:12px;padding:24px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.pm-m-num{font-family:var(--f-display);font-size:40px;font-weight:600;color:#fff;letter-spacing:-.025em;line-height:1}
+.pm-m-num sup{font-size:18px;color:var(--accent-light);vertical-align:super}
+.pm-m-label{font-size:13px;color:rgba(255,255,255,.5);max-width:160px;text-align:right;line-height:1.4}
+
+/* CASES MOBILE */
+.cases-m{padding:64px 24px;background:var(--surface)}
+.cases-m-title{font-family:var(--f-display);font-size:36px;font-weight:300;letter-spacing:-.02em;margin-bottom:40px}
+.cases-m-title strong{font-weight:600}
+.case-m{background:var(--white);border-radius:16px;overflow:hidden;border:0.5px solid var(--border);margin-bottom:16px}
+.case-m-top{background:var(--ink2);padding:32px 24px}
+.case-m-sector{font-size:10px;color:rgba(139,111,255,.7);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+.case-m-num{font-family:var(--f-display);font-size:52px;font-weight:600;color:#fff;letter-spacing:-.03em;line-height:1}
+.case-m-num span{color:var(--accent-light)}
+.case-m-metric{font-size:11px;color:rgba(255,255,255,.35);margin-top:4px}
+.case-m-body{padding:24px}
+.case-m-title{font-size:15px;font-weight:500;margin-bottom:8px}
+.case-m-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* CTA MOBILE */
+.cta-m{padding:64px 24px;background:var(--ink)}
+.cta-m-title{font-family:var(--f-display);font-size:40px;font-weight:300;color:#fff;line-height:1.15;letter-spacing:-.025em;margin-bottom:20px}
+.cta-m-title strong{font-weight:600}
+.cta-m-title em{font-style:italic;color:var(--accent-light)}
+.cta-m-sub{font-size:14px;color:rgba(255,255,255,.35);line-height:1.7;margin-bottom:36px}
+.cta-m-btn{display:flex;align-items:center;justify-content:center;background:var(--accent);color:#fff;font-size:14px;font-weight:500;padding:18px 28px;border-radius:10px;text-decoration:none;margin-bottom:12px}
+.cta-m-guarantee{font-size:12px;color:rgba(255,255,255,.3);text-align:center}
+
+/* FOOTER MOBILE */
+footer{background:var(--ink2);padding:40px 24px;border-top:0.5px solid rgba(255,255,255,.06)}
+.footer-m-logo{font-family:var(--f-display);font-size:18px;font-weight:300;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.footer-m-links{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:24px}
+.footer-m-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none}
+.footer-m-copy{font-size:11px;color:rgba(255,255,255,.2)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav-m">
+  <a href="logos-home.html" class="nav-m-logo">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <defs><linearGradient id="mg" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#8B6FFF"/><stop offset="100%" stop-color="#5B3FF8"/></linearGradient></defs>
+      <path d="M12 2 L2 22" stroke="url(#mg)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M12 2 L22 22" stroke="url(#mg)" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M6.5 15 L17.5 15" stroke="rgba(139,111,255,.3)" stroke-width=".7" stroke-linecap="round"/>
+      <circle cx="12" cy="2" r="1.8" fill="#5B3FF8"/>
+      <circle cx="12" cy="2" r=".9" fill="#fff" opacity=".9"/>
+    </svg>
+    <div><div class="nav-m-name">Logos</div><div class="nav-m-sub">Agência · IA</div></div>
+  </a>
+  <a href="#cta-m" class="nav-m-cta">Diagnóstico</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero-m">
+  <div class="hero-m-eyebrow">Agência especializada em IA</div>
+  <h1 class="hero-m-h1">
+    Marketing digital<br>com a <em>razão</em><br>que seu negócio<br><strong>merecia.</strong>
+  </h1>
+  <p class="hero-m-sub">Estratégias construídas com IA, dados comportamentais e expertise de quem vive o digital.</p>
+  <a href="#cta-m" class="hero-m-cta">Ver diagnóstico gratuito</a>
+  <a href="logos-servicos.html" class="hero-m-secondary">Como trabalhamos</a>
+  <div class="stats-strip">
+    <div class="stat-m"><label>Clientes</label><strong>87+</strong></div>
+    <div class="stat-m"><label>ROI médio</label><strong>4.2×</strong></div>
+    <div class="stat-m"><label>NPS</label><strong>91</strong></div>
+  </div>
+</section>
+
+<!-- DASH CARD -->
+<div class="dash-m">
+  <div class="dash-m-header">
+    <span class="dash-m-title">Performance</span>
+    <span class="dash-m-badge">AI-powered</span>
+  </div>
+  <div class="dash-m-num">+312<span>%</span></div>
+  <div class="dash-m-label">Crescimento em leads — 90 dias</div>
+  <div class="bar-m"><span class="bar-m-name">Orgânico</span><div class="bar-m-track"><div class="bar-m-fill" style="width:78%"></div></div><span class="bar-m-val">78%</span></div>
+  <div class="bar-m"><span class="bar-m-name">Pago</span><div class="bar-m-track"><div class="bar-m-fill" style="width:65%"></div></div><span class="bar-m-val">65%</span></div>
+  <div class="bar-m"><span class="bar-m-name">Social</span><div class="bar-m-track"><div class="bar-m-fill" style="width:91%"></div></div><span class="bar-m-val">91%</span></div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto-m">
+  <div class="manifesto-m-label">Nossa filosofia</div>
+  <div class="manifesto-m-quote">"No princípio era o Logos..."</div>
+  <p class="manifesto-m-body">
+    Marketing sem <strong>razão estratégica</strong> é ruído. Combinamos IA, dados e narrativa para criar <em>sistemas de crescimento</em> que funcionam enquanto você dorme.
+  </p>
+</section>
+
+<!-- SERVICES -->
+<section class="services-m">
+  <div class="services-m-head">
+    <h2 class="services-m-title">O que <strong>construímos</strong></h2>
+  </div>
+  <div class="services-m-list">
+    <div class="svc-m">
+      <div class="svc-m-left">
+        <div class="svc-m-num">01</div>
+        <div class="svc-m-name">Estratégia com IA</div>
+        <div class="svc-m-desc">Diagnóstico completo com modelos preditivos. Oportunidades identificadas antes da concorrência.</div>
+      </div>
+      <div class="svc-m-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3"/></svg></div>
+    </div>
+    <div class="svc-m">
+      <div class="svc-m-left">
+        <div class="svc-m-num">02</div>
+        <div class="svc-m-name">Tráfego pago avançado</div>
+        <div class="svc-m-desc">Gestão algorítmica no Meta, Google e programático. ROAS que melhora mês a mês.</div>
+      </div>
+      <div class="svc-m-icon accent"><svg viewBox="0 0 24 24"><path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/></svg></div>
+    </div>
+    <div class="svc-m">
+      <div class="svc-m-left">
+        <div class="svc-m-num">03</div>
+        <div class="svc-m-name">Conteúdo inteligente</div>
+        <div class="svc-m-desc">Produção assistida por IA com voz de marca consistente. Volume e qualidade juntos.</div>
+      </div>
+      <div class="svc-m-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
+    </div>
+    <div class="svc-m">
+      <div class="svc-m-left">
+        <div class="svc-m-num">04</div>
+        <div class="svc-m-name">Analytics & Data</div>
+        <div class="svc-m-desc">Dashboards customizados e relatórios executivos. Decisões baseadas em dados reais.</div>
+      </div>
+      <div class="svc-m-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+    </div>
+    <div class="svc-m">
+      <div class="svc-m-left">
+        <div class="svc-m-num">05</div>
+        <div class="svc-m-name">Sites & Landing Pages</div>
+        <div class="svc-m-desc">Desenvolvimento focado em conversão. A/B testing desde o lançamento.</div>
+      </div>
+      <div class="svc-m-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/></svg></div>
+    </div>
+    <div class="svc-m">
+      <div class="svc-m-left">
+        <div class="svc-m-num">06</div>
+        <div class="svc-m-name">Automação de marketing</div>
+        <div class="svc-m-desc">Fluxos de nutrição e jornadas personalizadas que convertem 24h por dia.</div>
+      </div>
+      <div class="svc-m-icon accent"><svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF -->
+<section class="proof-m">
+  <div class="proof-m-eyebrow">Resultados reais</div>
+  <h2 class="proof-m-title">Números que <strong>definem</strong> a diferença.</h2>
+  <div class="pm-m"><div class="pm-m-num">4.2<sup>×</sup></div><div class="pm-m-label">Retorno sobre investimento médio</div></div>
+  <div class="pm-m"><div class="pm-m-num">87<sup>+</sup></div><div class="pm-m-label">Clientes ativos gerando resultado</div></div>
+  <div class="pm-m"><div class="pm-m-num">91<sup>%</sup></div><div class="pm-m-label">Net Promoter Score</div></div>
+</section>
+
+<!-- CASES -->
+<section class="cases-m">
+  <h2 class="cases-m-title">Cases em <strong>destaque</strong></h2>
+  <div class="case-m">
+    <div class="case-m-top"><div class="case-m-sector">E-commerce · Moda</div><div class="case-m-num">+380<span>%</span></div><div class="case-m-metric">Receita orgânica</div></div>
+    <div class="case-m-body"><div class="case-m-title">Receita orgânica triplicou em 6 meses</div><p class="case-m-desc">Reestruturação completa de SEO e conteúdo com IA para e-commerce de moda.</p></div>
+  </div>
+  <div class="case-m">
+    <div class="case-m-top"><div class="case-m-sector">SaaS · B2B</div><div class="case-m-num">−58<span>%</span></div><div class="case-m-metric">Redução no CAC</div></div>
+    <div class="case-m-body"><div class="case-m-title">Automação reduziu custo de aquisição pela metade</div><p class="case-m-desc">Nurturing automatizado com qualificação por IA para ciclo de vendas B2B longo.</p></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-m" id="cta-m">
+  <h2 class="cta-m-title">Pronto para crescer com <em>inteligência</em><br><strong>real?</strong></h2>
+  <p class="cta-m-sub">Diagnóstico completo em 48h. Análise do seu ecossistema digital sem compromisso.</p>
+  <a href="#" class="cta-m-btn">Solicitar diagnóstico gratuito</a>
+  <span class="cta-m-guarantee">Análise em 48h · Sem compromisso</span>
+</section>
+
+<footer>
+  <div class="footer-m-logo">Logos</div>
+  <div class="footer-m-links">
+    <a href="logos-servicos.html">Serviços</a>
+    <a href="logos-cases.html">Cases</a>
+    <a href="logos-sobre.html">Sobre</a>
+    <a href="#">Blog</a>
+    <a href="#">Contato</a>
+  </div>
+  <div class="footer-m-copy">© 2026 Agência Logos</div>
+</footer>
+
+</body>
+</html>

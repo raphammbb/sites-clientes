@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Márcio Martins | Neuropsicólogo</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0d1b3e;
+    --blue: #1a3a7c;
+    --sky: #4a90c4;
+    --light-blue: #cfe4f5;
+    --bg: #f4f8fc;
+    --white: #ffffff;
+    --text: #1c2a3a;
+    --muted: #6b8099;
+    --accent: #2d6fa8;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    padding: 20px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(13,27,62,0.96);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .logo { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--white); letter-spacing: 0.05em; font-weight: 300; }
+  .logo span { color: var(--sky); font-style: italic; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--sky); }
+  .nav-cta { background: var(--sky); color: white !important; padding: 10px 22px; border-radius: 4px; font-weight: 500 !important; }
+  .nav-cta:hover { background: var(--accent) !important; }
+
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(145deg, var(--navy) 0%, #112255 50%, #0a1a40 100%);
+    display: grid; grid-template-columns: 1fr 1fr;
+    align-items: center; padding: 120px 60px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(74,144,196,0.12) 0%, transparent 65%);
+  }
+  .hero-grid-pattern {
+    position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(74,144,196,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(74,144,196,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content { position: relative; z-index: 2; }
+  .hero-eyebrow { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--sky); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .hero-eyebrow::before { content: ''; display: inline-block; width: 32px; height: 1px; background: var(--sky); }
+  h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 5vw, 5rem); color: var(--white); line-height: 1.05; font-weight: 300; margin-bottom: 12px; }
+  h1 em { font-style: italic; color: var(--sky); }
+  .hero-subtitle { font-size: 1rem; color: rgba(255,255,255,0.55); margin-bottom: 48px; line-height: 1.7; max-width: 420px; font-weight: 300; letter-spacing: 0.02em; }
+  .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--sky); color: white; padding: 16px 36px; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; border-radius: 4px; transition: all 0.3s; font-weight: 500; }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-outline { border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.8); padding: 16px 36px; text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; border-radius: 4px; transition: all 0.3s; }
+  .btn-outline:hover { border-color: var(--sky); color: var(--sky); }
+
+  .hero-visual { position: relative; z-index: 2; display: flex; justify-content: center; align-items: center; }
+  .photo-frame {
+    width: 340px; height: 460px;
+    border-radius: 180px 180px 12px 12px;
+    overflow: hidden; position: relative;
+    border: 1px solid rgba(74,144,196,0.35);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.45);
+    flex-shrink: 0;
+  }
+  .photo-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 10%; display: block; }
+  .photo-caption {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(13,27,62,0.7));
+    padding: 32px 20px 18px;
+    text-align: center;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .dots-pattern { position: absolute; top: 40px; right: -60px; display: grid; grid-template-columns: repeat(5,1fr); gap: 10px; opacity: 0.25; }
+  .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--sky); }
+
+  section { padding: 100px 60px; }
+  .section-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.25em; color: var(--sky); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .section-label::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--sky); }
+  h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 3.5vw, 3.5rem); font-weight: 300; color: var(--navy); line-height: 1.15; margin-bottom: 20px; }
+  h2 em { font-style: italic; color: var(--sky); }
+
+  .about { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-card { background: linear-gradient(135deg, var(--navy), var(--blue)); border-radius: 20px; padding: 48px; color: white; position: relative; overflow: hidden; }
+  .about-card::after { content: '"'; position: absolute; bottom: -20px; right: 20px; font-family: 'Cormorant Garamond', serif; font-size: 14rem; color: rgba(255,255,255,0.04); line-height: 1; }
+  .quote-text { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-style: italic; line-height: 1.5; color: rgba(255,255,255,0.9); position: relative; z-index: 1; margin-bottom: 24px; }
+  .quote-author { font-size: 0.8rem; color: var(--sky); text-transform: uppercase; letter-spacing: 0.12em; }
+  .about-accent { position: absolute; top: -24px; right: -24px; width: 120px; height: 120px; border-radius: 50%; border: 2px solid rgba(74,144,196,0.3); }
+  .about-text p { font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 20px; font-weight: 300; }
+  .about-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+  .badge { background: var(--bg); border: 1px solid var(--light-blue); color: var(--navy); padding: 8px 18px; border-radius: 100px; font-size: 0.82rem; font-weight: 500; }
+
+  .services { background: var(--bg); }
+  .services-header { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: end; margin-bottom: 60px; }
+  .services-header p { color: var(--muted); line-height: 1.8; font-size: 1rem; font-weight: 300; }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .service-card { background: var(--white); border-radius: 16px; padding: 40px 32px; border: 1px solid rgba(74,144,196,0.1); transition: all 0.4s; position: relative; overflow: hidden; }
+  .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 0; background: var(--sky); transition: height 0.4s; }
+  .service-card:hover::before { height: 100%; }
+  .service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(13,27,62,0.08); }
+  .service-icon { width: 48px; height: 3px; background: var(--light-blue); margin-bottom: 24px; border-radius: 2px; }
+  .service-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--navy); margin-bottom: 12px; font-weight: 600; }
+  .service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.75; font-weight: 300; }
+
+  .audience { background: linear-gradient(160deg, var(--navy), #0e2050); color: white; text-align: center; }
+  .audience h2 { color: white; }
+  .audience h2 em { color: var(--sky); }
+  .audience > p { color: rgba(255,255,255,0.55); max-width: 500px; margin: 0 auto 60px; font-size: 1rem; line-height: 1.8; font-weight: 300; }
+  .audience-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+  .audience-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(74,144,196,0.2); border-radius: 20px; padding: 44px 32px; transition: all 0.3s; backdrop-filter: blur(10px); }
+  .audience-card:hover { background: rgba(74,144,196,0.15); border-color: rgba(74,144,196,0.5); transform: translateY(-4px); }
+  .audience-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: white; margin-bottom: 10px; font-weight: 400; }
+  .audience-card p { font-size: 0.85rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; }
+  .audience-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--sky); margin-bottom: 12px; font-weight: 300; }
+
+  .contact { background: var(--white); display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .contact-info h2 { margin-bottom: 16px; }
+  .contact-info > p { color: var(--muted); line-height: 1.8; font-size: 1rem; font-weight: 300; margin-bottom: 40px; }
+  .contact-items { display: flex; flex-direction: column; gap: 24px; }
+  .contact-item { display: flex; align-items: flex-start; gap: 16px; }
+  .contact-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--light-blue); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .contact-item-label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--sky); margin-bottom: 4px; }
+  .contact-item-value { font-size: 0.95rem; color: var(--navy); font-weight: 500; }
+  .contact-form-box { background: var(--bg); border-radius: 20px; padding: 44px; border: 1px solid var(--light-blue); }
+  .contact-form-box h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; color: var(--navy); margin-bottom: 8px; font-weight: 400; }
+  .contact-form-box > p { font-size: 0.85rem; color: var(--muted); margin-bottom: 28px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--white); border: 1px solid rgba(74,144,196,0.2); border-radius: 8px; padding: 12px 16px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text); outline: none; transition: border-color 0.3s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--sky); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .btn-form { width: 100%; background: var(--navy); color: white; border: none; padding: 16px; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; cursor: pointer; letter-spacing: 0.05em; transition: all 0.3s; margin-top: 8px; }
+  .btn-form:hover { background: var(--accent); transform: translateY(-2px); }
+
+  footer { background: var(--navy); padding: 60px 60px 30px; color: rgba(255,255,255,0.5); }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 30px; }
+  .footer-brand .logo { font-size: 1.4rem; }
+  .footer-brand p { font-size: 0.82rem; margin-top: 8px; line-height: 1.6; max-width: 260px; }
+  .footer-nav h4 { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.18em; color: var(--sky); margin-bottom: 16px; }
+  .footer-nav ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-nav ul a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; }
+  .footer-nav ul a:hover { color: white; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem; }
+  .made-by a { color: var(--sky); text-decoration: none; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content > * { animation: fadeUp 0.7s ease forwards; opacity: 0; }
+  .hero-eyebrow { animation-delay: 0.1s; }
+  h1 { animation-delay: 0.25s; }
+  .hero-subtitle { animation-delay: 0.4s; }
+  .hero-cta { animation-delay: 0.55s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 18px 24px; }
+    .nav-links { display: none; }
+    .hero, .about, .contact { grid-template-columns: 1fr; padding: 100px 24px 60px; }
+    .hero-visual { display: none; }
+    section { padding: 70px 24px; }
+    .services-grid, .audience-cards { grid-template-columns: 1fr; }
+    .services-header { grid-template-columns: 1fr; gap: 20px; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Márcio <span>Martins</span></div>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#publico">Público</a></li>
+    <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-grid-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Neuropsicólogo · CRP 06/161260</div>
+    <h1>Cuidar da mente<br>é um ato de<br><em>amor próprio</em></h1>
+    <p class="hero-subtitle">Atendimento especializado em neuropsicologia para crianças, adolescentes e adultos. Presencial em São Paulo e Online.</p>
+    <div class="hero-cta">
+      <a href="#contato" class="btn-primary">Agendar Consulta</a>
+      <a href="#servicos" class="btn-outline">Conhecer Serviços</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="dots-pattern">
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      <div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    </div>
+    <div class="photo-frame">
+      <img src="marcio2.jpeg" alt="Dr. Márcio Martins, Neuropsicólogo">
+    </div>
+  </div>
+</section>
+
+<section class="about" id="sobre">
+  <div class="about-visual">
+    <div class="about-card">
+      <div class="about-accent"></div>
+      <p class="quote-text">"Cuidar da mente é um ato de amor próprio."</p>
+      <div class="quote-author">— Márcio Martins, Neuropsicólogo</div>
+    </div>
+  </div>
+  <div class="about-text">
+    <div class="section-label">Sobre o Profissional</div>
+    <h2>Neuropsicólogo<br><em>especialista</em> em saúde mental</h2>
+    <p>Dr. Márcio Martins é neuropsicólogo registrado no CRP 06/161260, com atuação voltada para conteúdos práticos sobre saúde mental e atendimento clínico individualizado.</p>
+    <p>Com uma abordagem psicossocial humanizada, o Dr. Márcio oferece suporte especializado para crianças, adolescentes e adultos, tanto de forma presencial em São Paulo quanto online — garantindo acesso ao cuidado psicológico de qualidade para todos.</p>
+    <div class="about-badges">
+      <span class="badge">Neuropsicólogo</span>
+      <span class="badge">Palestrante</span>
+      <span class="badge">Criador de Conteúdo</span>
+      <span class="badge">Abordagem Psicossocial</span>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="servicos">
+  <div class="services-header">
+    <div>
+      <div class="section-label">O que ofereço</div>
+      <h2>Serviços <em>especializados</em><br>em saúde mental</h2>
+    </div>
+    <p>Cada pessoa é única. Por isso, o atendimento é personalizado e pensado para as necessidades específicas de cada fase da vida — da infância à vida adulta.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon"></div>
+      <h3>Avaliação Neuropsicológica</h3>
+      <p>Avaliação completa das funções cognitivas, comportamentais e emocionais para diagnóstico preciso e orientação terapêutica.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"></div>
+      <h3>Psicoterapia</h3>
+      <p>Sessões individuais de psicoterapia com abordagem psicossocial, voltadas para o desenvolvimento emocional e bem-estar mental.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"></div>
+      <h3>Atendimento Infantil</h3>
+      <p>Suporte especializado para crianças com dificuldades de aprendizagem, comportamentais ou de desenvolvimento neurológico.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"></div>
+      <h3>Atendimento ao Adolescente</h3>
+      <p>Acompanhamento psicológico na fase da adolescência, abordando questões de identidade, ansiedade e pressão escolar.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"></div>
+      <h3>Atendimento ao Adulto</h3>
+      <p>Terapia para adultos que buscam autoconhecimento, tratamento de ansiedade, depressão, burnout e outros desafios da vida moderna.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon"></div>
+      <h3>Palestras e Workshops</h3>
+      <p>Palestras psicossociais para empresas, escolas e instituições sobre saúde mental, bem-estar e desenvolvimento humano.</p>
+    </div>
+  </div>
+</section>
+
+<section class="audience" id="publico">
+  <div class="section-label" style="justify-content:center;">Para quem é</div>
+  <h2>Atendimento para <em>todas</em><br>as fases da vida</h2>
+  <p>Cada momento da vida tem seus próprios desafios. O suporte especializado do Dr. Márcio está disponível para quem precisa — com cuidado, escuta e técnica.</p>
+  <div class="audience-cards">
+    <div class="audience-card">
+      <div class="audience-num">01</div>
+      <h3>Crianças</h3>
+      <p>Dificuldades de aprendizagem, TDAH, autismo, problemas de comportamento e desenvolvimento.</p>
+    </div>
+    <div class="audience-card">
+      <div class="audience-num">02</div>
+      <h3>Adolescentes</h3>
+      <p>Ansiedade, pressão escolar, identidade, questões emocionais da transição para a vida adulta.</p>
+    </div>
+    <div class="audience-card">
+      <div class="audience-num">03</div>
+      <h3>Adultos</h3>
+      <p>Burnout, estresse, autoconhecimento, ansiedade, depressão e qualidade de vida no trabalho e relações.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contato">
+  <div class="contact-info">
+    <div class="section-label">Agenda Aberta</div>
+    <h2>Pronto para<br>começar sua<br><em>jornada?</em></h2>
+    <p>Entre em contato para agendar sua consulta presencial ou online. O primeiro passo é o mais importante — e você não precisa dar sozinho.</p>
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.8 10.72 19.79 19.79 0 01.73 2.18 2 2 0 012.7 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l.87-.87a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 15.92z"/></svg>
+        </div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Telefone / WhatsApp</div>
+          <div class="contact-item-value">(11) 97037-0569</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        </div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Endereço</div>
+          <div class="contact-item-value">Rua dos Paulistanos, 208 — Vila Paulista, São Paulo/SP</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Modalidade</div>
+          <div class="contact-item-value">Presencial e Online</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+        <div class="contact-item-text">
+          <div class="contact-item-label">Instagram</div>
+          <div class="contact-item-value">@psico.marcio.martins</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contact-form-box">
+    <h3>Agendar Consulta</h3>
+    <p>Preencha o formulário e entraremos em contato em breve.</p>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" placeholder="Seu nome">
+      </div>
+      <div class="form-group">
+        <label>Telefone</label>
+        <input type="tel" placeholder="(11) 99999-9999">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>E-mail</label>
+      <input type="email" placeholder="seu@email.com">
+    </div>
+    <div class="form-group">
+      <label>Tipo de Atendimento</label>
+      <select>
+        <option>Selecione...</option>
+        <option>Psicoterapia – Adulto</option>
+        <option>Psicoterapia – Adolescente</option>
+        <option>Atendimento Infantil</option>
+        <option>Avaliação Neuropsicológica</option>
+        <option>Palestra / Workshop</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Modalidade</label>
+      <select>
+        <option>Selecione...</option>
+        <option>Presencial – Vila Paulista, SP</option>
+        <option>Online</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Mensagem (opcional)</label>
+      <textarea placeholder="Conte um pouco sobre o que você busca..."></textarea>
+    </div>
+    <button class="btn-form">Enviar Solicitação</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">Márcio <span>Martins</span></div>
+      <p>Neuropsicólogo CRP 06/161260<br>Cuidar da mente é um ato de amor próprio.</p>
+    </div>
+    <div class="footer-nav">
+      <h4>Navegação</h4>
+      <ul>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#publico">Público</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-nav">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="tel:11970370569">(11) 97037-0569</a></li>
+        <li><a href="#">Vila Paulista, São Paulo/SP</a></li>
+        <li><a href="#">@psico.marcio.martins</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Márcio Martins Neuropsicólogo. Todos os direitos reservados.</span>
+    <span class="made-by">Desenvolvido por <a href="#">Agência Logos</a></span>
+  </div>
+</footer>
+
+</body>
+</html>

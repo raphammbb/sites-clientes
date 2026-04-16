@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristiano Mitsudo | Personal Trainer SP</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --white: #f5f2ee;
+    --accent: #e8ff4a;
+    --accent2: #ff6b35;
+    --gray: #1a1a1a;
+    --gray2: #2e2e2e;
+    --muted: #888;
+    --font-display: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    background: linear-gradient(to bottom, rgba(8,8,8,.95), transparent);
+    backdrop-filter: blur(4px);
+  }
+  .nav-logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    letter-spacing: 2px;
+    color: var(--white);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-cta {
+    background: var(--accent);
+    color: var(--black);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+  }
+  .nav-cta:hover { background: #d4eb2a; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 140px 60px 80px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,255,74,.08);
+    border: 1px solid rgba(232,255,74,.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+    width: fit-content;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: .4; transform: scale(.7); }
+  }
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(64px, 7vw, 108px);
+    line-height: .95;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .hero-title .outline {
+    -webkit-text-stroke: 1.5px var(--white);
+    color: transparent;
+  }
+  .hero-title .accent { color: var(--accent); }
+  .hero-sub {
+    font-size: 15px;
+    font-weight: 300;
+    color: #aaa;
+    max-width: 360px;
+    margin: 24px 0 44px;
+    line-height: 1.7;
+  }
+  .hero-sub strong { color: var(--white); font-weight: 500; }
+  .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--accent);
+    color: var(--black);
+    font-weight: 700; font-size: 14px; letter-spacing: .5px;
+    padding: 16px 32px; border-radius: 2px;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-primary:hover { background: #d4eb2a; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(232,255,74,.25); }
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 8px;
+    border: 1px solid rgba(255,255,255,.2);
+    color: var(--white);
+    font-weight: 400; font-size: 14px;
+    padding: 16px 28px; border-radius: 2px;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,.04); }
+
+  .hero-stats {
+    display: flex; gap: 36px;
+    margin-top: 60px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,.08);
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 42px;
+    color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 11px; color: var(--muted); letter-spacing: 1.5px; text-transform: uppercase; margin-top: 4px; }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+  }
+  .hero-img-container {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+  }
+  .hero-img-container::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 60%, rgba(232,255,74,.06) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(255,107,53,.04) 0%, transparent 50%);
+  }
+  /* Geometric decorative elements */
+  .hero-grid-lines {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(232,255,74,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,255,74,.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-circle {
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(232,255,74,.18);
+  }
+  .hero-circle-1 { width: 460px; height: 460px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+  .hero-circle-2 { width: 340px; height: 340px; top: 50%; left: 50%; transform: translate(-50%,-50%); border-color: rgba(232,255,74,.1); }
+  .hero-circle-3 { width: 220px; height: 220px; top: 50%; left: 50%; transform: translate(-50%,-50%); border-color: rgba(232,255,74,.06); }
+  .hero-photo-frame {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(232,255,74,.35);
+    box-shadow: 0 0 0 1px rgba(232,255,74,.1), 0 20px 60px rgba(0,0,0,.6);
+    z-index: 2;
+  }
+  .hero-photo-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+  .cref-tag {
+    position: absolute; bottom: 40px; right: 40px;
+    background: rgba(232,255,74,.1);
+    border: 1px solid rgba(232,255,74,.2);
+    color: var(--accent);
+    font-size: 11px; letter-spacing: 2px; font-weight: 700; text-transform: uppercase;
+    padding: 8px 14px; border-radius: 2px;
+  }
+  .hero-diagonal {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    width: 80px;
+    background: linear-gradient(to right, var(--black), transparent);
+    z-index: 1;
+  }
+
+  /* ── MARQUEE ── */
+  .marquee-section {
+    overflow: hidden;
+    background: var(--accent);
+    padding: 14px 0;
+  }
+  .marquee-track {
+    display: flex;
+    animation: marquee 18s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .marquee-item {
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: var(--black);
+    text-transform: uppercase;
+    padding: 0 28px;
+  }
+  .marquee-sep { color: rgba(0,0,0,.3); }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ── SECTIONS COMMON ── */
+  section { padding: 100px 60px; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 10px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .section-label::before { content: ''; width: 24px; height: 1px; background: var(--accent); }
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 5vw, 72px);
+    line-height: 1;
+    letter-spacing: .5px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    background: var(--gray);
+    border-top: 1px solid rgba(255,255,255,.05);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+  }
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4/5;
+    background: linear-gradient(135deg, #141414, #1e1e1e);
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .about-visual-inner {
+    font-family: var(--font-display);
+    font-size: 120px;
+    color: rgba(232,255,74,.07);
+    letter-spacing: -2px;
+    user-select: none;
+  }
+  .about-accent-bar {
+    position: absolute; left: 0; top: 60px; bottom: 60px;
+    width: 3px; background: var(--accent);
+  }
+  .about-corner-tag {
+    position: absolute; bottom: 24px; left: 24px;
+    font-size: 10px; letter-spacing: 2px; color: var(--muted); text-transform: uppercase;
+  }
+  .about-content { padding: 20px 0; }
+  .about-text {
+    font-size: 15px; font-weight: 300; color: #bbb; line-height: 1.85;
+    margin-top: 24px;
+  }
+  .about-text + .about-text { margin-top: 16px; }
+  .credential-list { margin-top: 36px; display: flex; flex-direction: column; gap: 14px; }
+  .credential-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 20px;
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 2px;
+    font-size: 14px;
+  }
+  .credential-icon {
+    width: 36px; height: 36px;
+    background: rgba(232,255,74,.1);
+    border-radius: 2px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; flex-shrink: 0;
+  }
+  .credential-title { font-weight: 500; color: var(--white); }
+  .credential-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* ── SERVICES ── */
+  #services {
+    background: var(--black);
+  }
+  .services-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px;
+    flex-wrap: wrap; gap: 24px;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--gray);
+    padding: 44px 36px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: background .3s;
+    border: 1px solid rgba(255,255,255,.04);
+  }
+  .service-card:hover { background: #222; }
+  .service-card:hover .service-arrow { transform: translate(4px, -4px); }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .4s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-num {
+    font-family: var(--font-display);
+    font-size: 13px; letter-spacing: 3px; color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .service-title {
+    font-family: var(--font-display);
+    font-size: 32px; letter-spacing: .5px; line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .service-desc { font-size: 13px; font-weight: 300; color: #888; line-height: 1.7; }
+  .service-arrow {
+    position: absolute; bottom: 30px; right: 30px;
+    font-size: 20px; color: var(--accent);
+    transition: transform .25s;
+  }
+  .service-tag {
+    display: inline-block;
+    margin-top: 20px;
+    background: rgba(232,255,74,.08);
+    border: 1px solid rgba(232,255,74,.15);
+    color: var(--accent);
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    padding: 5px 10px; border-radius: 1px;
+  }
+
+  /* ── RESULTS ── */
+  #results {
+    background: var(--gray);
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,.05);
+  }
+  .results-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 60px;
+  }
+  .result-card {
+    background: var(--black);
+    padding: 50px 30px;
+    border: 1px solid rgba(255,255,255,.04);
+    position: relative;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .result-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,.4); }
+  .result-card.featured {
+    background: var(--accent);
+    border-color: transparent;
+  }
+  .result-card.featured .result-num,
+  .result-card.featured .result-label { color: var(--black); }
+  .result-card.featured .result-desc { color: rgba(0,0,0,.6); }
+  .result-num {
+    font-family: var(--font-display);
+    font-size: 72px; line-height: 1;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .result-label { font-weight: 700; font-size: 14px; margin-bottom: 12px; }
+  .result-desc { font-size: 13px; color: var(--muted); line-height: 1.6; max-width: 200px; margin: 0 auto; }
+
+  /* ── TESTIMONIAL ── */
+  #testimonial {
+    background: var(--black);
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 80px; align-items: center;
+  }
+  .testimonial-visual {
+    position: relative;
+  }
+  .testimonial-quote-mark {
+    font-family: var(--font-display);
+    font-size: 220px;
+    line-height: .8;
+    color: rgba(232,255,74,.06);
+    user-select: none;
+    margin-bottom: -60px;
+  }
+  .testimonial-card {
+    background: var(--gray);
+    border: 1px solid rgba(255,255,255,.06);
+    padding: 36px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '';
+    position: absolute; top: 0; left: 28px; right: 28px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+  }
+  .testimonial-text {
+    font-size: 15px; line-height: 1.8; color: #ccc; font-weight: 300; font-style: italic;
+    margin-bottom: 24px;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 14px; }
+  .testimonial-avatar {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, #333, #444);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; color: var(--accent);
+  }
+  .testimonial-name { font-weight: 600; font-size: 14px; }
+  .testimonial-role { font-size: 12px; color: var(--muted); }
+  .testimonial-stars { color: var(--accent); font-size: 13px; margin-bottom: 4px; }
+  .testimonial-right .section-title { margin-bottom: 30px; }
+  .testimonial-right p { font-size: 15px; font-weight: 300; color: #aaa; line-height: 1.8; margin-bottom: 20px; }
+  .highlight-text {
+    display: inline; background: linear-gradient(to right, var(--accent), #b8ff00);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    font-weight: 700;
+  }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--accent);
+    text-align: center;
+    padding: 100px 60px;
+  }
+  #cta .section-label { color: rgba(0,0,0,.5); margin: 0 auto 16px; }
+  #cta .section-label::before { background: rgba(0,0,0,.4); }
+  #cta .section-title { color: var(--black); margin-bottom: 20px; }
+  #cta p { color: rgba(0,0,0,.6); font-size: 16px; max-width: 440px; margin: 0 auto 44px; }
+  .btn-dark {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--black);
+    color: var(--white);
+    font-weight: 600; font-size: 14px;
+    padding: 18px 36px; border-radius: 2px;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-dark:hover { background: #111; transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,0,0,.25); }
+  .whatsapp-icon {
+    width: 22px; height: 22px;
+    background: #25d366;
+    border-radius: 50%;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #050505;
+    padding: 40px 60px;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,.06);
+    flex-wrap: wrap; gap: 20px;
+  }
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 20px; letter-spacing: 2px;
+    color: var(--white);
+  }
+  .footer-logo span { color: var(--accent); }
+  .footer-info { font-size: 12px; color: var(--muted); text-align: center; }
+  .footer-info a { color: var(--muted); text-decoration: none; }
+  .footer-info a:hover { color: var(--white); }
+  .footer-agency {
+    font-size: 11px; color: rgba(255,255,255,.2); letter-spacing: 1px;
+  }
+  .footer-agency a { color: rgba(255,255,255,.35); text-decoration: none; }
+  .footer-agency a:hover { color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    section { padding: 70px 24px; }
+    #hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 120px 24px 60px; }
+    .hero-right { height: 260px; }
+    .hero-stats { gap: 24px; }
+    #about { grid-template-columns: 1fr; gap: 40px; padding: 70px 24px; }
+    .about-visual { display: none; }
+    .services-grid { grid-template-columns: 1fr; }
+    .results-grid { grid-template-columns: 1fr; }
+    #testimonial { grid-template-columns: 1fr; gap: 40px; padding: 70px 24px; }
+    .testimonial-visual { display: none; }
+    footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+    .services-header { flex-direction: column; }
+    #cta { padding: 80px 24px; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-up {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">MITSUDO<span>.</span></a>
+  <a href="https://wa.me/5511995458752?text=Olá+Cristiano,+vim+pelo+seu+site+e+quero+saber+mais+sobre+consultoria!" class="nav-cta" target="_blank">Fale Comigo</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge">Personal Trainer • CREF 079180/G-SP</div>
+    <h1 class="hero-title">
+      SEUS<br>
+      <span class="outline">MELHO</span><span class="accent">RES</span><br>
+      RESULTADOS
+    </h1>
+    <p class="hero-sub">
+      Alcance <strong>hipertrofia e emagrecimento</strong> em menos tempo com acompanhamento presencial e online em São Paulo.
+    </p>
+    <div class="hero-actions">
+      <a href="https://wa.me/5511995458752?text=Olá+Cristiano,+vim+pelo+seu+site+e+quero+começar+meu+treino!" class="btn-primary" target="_blank">
+        Começar Agora →
+      </a>
+      <a href="#services" class="btn-secondary">Ver Serviços</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Alunos</div>
+      </div>
+      <div>
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Anos de experiência</div>
+      </div>
+      <div>
+        <div class="stat-num">Online</div>
+        <div class="stat-label">e Presencial</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-container">
+      <div class="hero-grid-lines"></div>
+      <div class="hero-circle hero-circle-1"></div>
+      <div class="hero-circle hero-circle-2"></div>
+      <div class="hero-circle hero-circle-3"></div>
+      <div class="hero-photo-frame">
+        <img src="cristiano.png" alt="Cristiano Mitsudo Personal Trainer">
+      </div>
+      <div class="cref-tag">CREF 079180/G-SP</div>
+    </div>
+    <div class="hero-diagonal"></div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">Hipertrofia</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Emagrecimento</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Consultoria Online</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Consultoria Presencial</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Resultados Reais</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Personal Trainer SP</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Hipertrofia</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Emagrecimento</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Consultoria Online</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Consultoria Presencial</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Resultados Reais</span><span class="marquee-item marquee-sep">✦</span>
+    <span class="marquee-item">Personal Trainer SP</span><span class="marquee-item marquee-sep">✦</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-visual fade-up">
+    <div class="about-accent-bar"></div>
+    <div class="about-visual-inner">CM</div>
+    <div class="about-corner-tag">@personal.cristianomitsudo</div>
+  </div>
+  <div class="about-content fade-up">
+    <div class="section-label">Sobre</div>
+    <h2 class="section-title">Quem é<br>Cristiano Mitsudo</h2>
+    <p class="about-text">
+      Personal trainer certificado pelo CREF (079180/G-SP), especializado em transformar corpos e estilos de vida por meio de protocolos personalizados de treino e acompanhamento próximo.
+    </p>
+    <p class="about-text">
+      Com metodologia focada em resultados rápidos e duradouros, atende alunos presencialmente em São Paulo e em todo o Brasil via consultoria online — sem abrir mão da qualidade e da personalização.
+    </p>
+    <div class="credential-list">
+      <div class="credential-item">
+        <div class="credential-icon">🏋️</div>
+        <div>
+          <div class="credential-title">Registro Profissional</div>
+          <div class="credential-sub">CREF 079180/G-SP — Conselho Regional de Educação Física</div>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-icon">📍</div>
+        <div>
+          <div class="credential-title">Atendimento em São Paulo</div>
+          <div class="credential-sub">Consultoria presencial e online para todo o Brasil</div>
+        </div>
+      </div>
+      <div class="credential-item">
+        <div class="credential-icon">📱</div>
+        <div>
+          <div class="credential-title">Instagram Ativo</div>
+          <div class="credential-sub">@personal.cristianomitsudo — dicas e resultados reais</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="services-header fade-up">
+    <div>
+      <div class="section-label">Serviços</div>
+      <h2 class="section-title">O que eu<br>ofereço</h2>
+    </div>
+    <a href="https://wa.me/5511995458752?text=Quero+saber+mais+sobre+os+serviços!" class="btn-secondary" target="_blank" style="white-space:nowrap">Consultar preços →</a>
+  </div>
+  <div class="services-grid">
+    <div class="service-card fade-up">
+      <div class="service-num">01</div>
+      <h3 class="service-title">Consultoria<br>Presencial</h3>
+      <p class="service-desc">Treinamento ao vivo, com correção de postura, execução e intensidade ideais para o seu objetivo. Atendimento em São Paulo.</p>
+      <div class="service-tag">São Paulo</div>
+      <div class="service-arrow">↗</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">02</div>
+      <h3 class="service-title">Consultoria<br>Online</h3>
+      <p class="service-desc">Plano de treino e acompanhamento completo à distância. Ideal para quem quer transformar o corpo de qualquer lugar do Brasil.</p>
+      <div class="service-tag">Todo o Brasil</div>
+      <div class="service-arrow">↗</div>
+    </div>
+    <div class="service-card fade-up">
+      <div class="service-num">03</div>
+      <h3 class="service-title">Hipertrofia<br>& Emagrecimento</h3>
+      <p class="service-desc">Protocolos especializados para ganho de massa muscular ou redução de gordura. Resultados mensuráveis e sustentáveis.</p>
+      <div class="service-tag">Especialidade</div>
+      <div class="service-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section id="results">
+  <div class="fade-up">
+    <div class="section-label" style="margin: 0 auto 16px;">Resultados</div>
+    <h2 class="section-title">Números que<br>falam por si</h2>
+  </div>
+  <div class="results-grid">
+    <div class="result-card fade-up">
+      <div class="result-num">100+</div>
+      <div class="result-label">Alunos Atendidos</div>
+      <p class="result-desc">Vidas transformadas presencialmente e online</p>
+    </div>
+    <div class="result-card featured fade-up">
+      <div class="result-num">2x</div>
+      <div class="result-label">Mais Rápido</div>
+      <p class="result-desc">Alcance seus resultados em menos tempo com método validado</p>
+    </div>
+    <div class="result-card fade-up">
+      <div class="result-num">5★</div>
+      <div class="result-label">Avaliação</div>
+      <p class="result-desc">Alunos satisfeitos que indicam e voltam para novos objetivos</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section id="testimonial">
+  <div class="testimonial-visual fade-up">
+    <div class="testimonial-quote-mark">"</div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">
+        "Consegui fazer 6' de trote leve revezando com caminhada e estou FELIZ DEMAIS por estar voltando mesmo que seja no início! Agradeço ao Cristiano Mitsudo Treinador pela metodologia."
+      </p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">A</div>
+        <div>
+          <div class="testimonial-stars">★★★★★</div>
+          <div class="testimonial-name">Aluna Cristiano</div>
+          <div class="testimonial-role">1º pódio • Trail Run</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="testimonial-right fade-up">
+    <div class="section-label">Depoimentos</div>
+    <h2 class="section-title">Resultados<br>que motivam</h2>
+    <p>Cada aluno tem uma história única. O objetivo de Cristiano é que essa história inclua <span class="highlight-text">conquistas reais e duradouras</span> — sejam elas uma corrida de aventura, um corpo mais definido ou mais disposição no dia a dia.</p>
+    <p>Do zero ao pódio. Do sedentarismo à leveza. Da desmotivação à consistência.</p>
+    <a href="https://www.instagram.com/personal.cristianomitsudo" class="btn-secondary" target="_blank" style="margin-top: 10px;">Ver mais no Instagram →</a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="fade-up">
+    <div class="section-label">Contato</div>
+    <h2 class="section-title">Pronto para<br>MUDAR?</h2>
+    <p>Entre em contato agora e descubra como a consultoria certa pode acelerar seus resultados de verdade.</p>
+    <a href="https://wa.me/5511995458752?text=Olá+Cristiano!+Vim+pelo+site+e+quero+começar+minha+consultoria!" class="btn-dark" target="_blank">
+      <span class="whatsapp-icon">💬</span>
+      Falar no WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MITSUDO<span>.</span></div>
+  <div class="footer-info">
+    <span>CREF 079180/G-SP</span> &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/personal.cristianomitsudo" target="_blank">@personal.cristianomitsudo</a> &nbsp;·&nbsp;
+    <a href="https://wa.me/5511995458752" target="_blank">+55 11 99545-8752</a>
+  </div>
+  <div class="footer-agency">Desenvolvido por <a href="#">Agência Logos</a></div>
+</footer>
+
+<script>
+  // Fade up on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        // Stagger children
+        const children = e.target.querySelectorAll('.fade-up');
+        children.forEach((c, i) => {
+          setTimeout(() => c.classList.add('visible'), i * 120);
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Service cards click to WhatsApp
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('click', () => {
+      window.open('https://wa.me/5511995458752?text=Olá+Cristiano,+quero+saber+mais+sobre+os+seus+serviços!', '_blank');
+    });
+  });
+</script>
+
+</body>
+</html>
