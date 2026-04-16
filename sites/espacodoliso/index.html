@@ -694,9 +694,28 @@
 
   @media (max-width: 900px) {
     .before-after { padding: 2rem 1.5rem 5rem; }
-    .ba-grid { grid-template-columns: 1fr 40px 1fr; }
-    .ba-divider-icon { width: 34px; height: 34px; }
-    .ba-divider-icon svg { width: 14px; height: 14px; }
+    .ba-grid {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+      max-width: 420px;
+    }
+    .ba-card { aspect-ratio: 4/3; }
+    .ba-divider {
+      flex-direction: row;
+      padding: 0.5rem 0;
+    }
+    .ba-divider-line {
+      width: 3rem;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(200,149,108,0.4));
+    }
+    .ba-divider-line-bottom {
+      background: linear-gradient(to right, rgba(200,149,108,0.4), transparent);
+    }
+    .ba-divider-icon {
+      transform: rotate(90deg);
+      width: 36px; height: 36px;
+    }
   }
 
   /* CONTACT */
