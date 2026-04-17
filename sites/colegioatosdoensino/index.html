@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
+<head><meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Colégio Atos do Ensino | Berçário ao Infantil | Vila Alexandria, SP</title>
 <meta name="description" content="Colégio cristão em Vila Alexandria, São Paulo. Berçário ao Infantil com amor, fé e propósito. Matrículas abertas!">
@@ -516,12 +516,22 @@ setTimeout(function() {
 
 function sendWhatsapp(btn) {
   var f = btn.closest('.contato-form');
-  var nome = f.querySelector('input[type=text]').value || 'não informado';
-  var tel  = f.querySelector('input[type=tel]').value  || 'não informado';
-  var fase = f.querySelector('select').value           || 'não informado';
-  var msg  = f.querySelector('textarea').value         || '';
-  var text = 'Olá! Sou ' + nome + ' (' + tel + '). Interesse em matrícula: ' + fase + '. ' + msg;
-  window.open('https://wa.me/5511990105430?text=' + encodeURIComponent(text), '_blank');
+  var nome = f.querySelector('input[type=text]').value.trim();
+  var tel  = f.querySelector('input[type=tel]').value.trim();
+  var fase = f.querySelector('select').value;
+  var msg  = f.querySelector('textarea').value.trim();
+  if (!nome) { alert('Por favor, informe seu nome.'); return; }
+  if (!tel)  { alert('Por favor, informe seu telefone/WhatsApp.'); return; }
+  if (!fase) { alert('Por favor, selecione a faixa etária da criança.'); return; }
+  var partes = [
+    'Olá! Vim pelo site do Colégio Atos do Ensino e gostaria de saber mais sobre matrículas.',
+    '',
+    '*Nome:* ' + nome,
+    '*Telefone:* ' + tel,
+    '*Faixa etária da criança:* ' + fase
+  ];
+  if (msg) partes.push('*Mensagem:* ' + msg);
+  window.open('https://wa.me/5511990105430?text=' + encodeURIComponent(partes.join('\n')), '_blank');
 }
 </script>
 </body>
