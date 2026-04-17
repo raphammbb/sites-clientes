@@ -33,6 +33,16 @@ nav.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.08);}
 .nav-links a:hover{color:var(--laranja);}
 .nav-cta{background:var(--laranja);color:white;padding:10px 22px;border-radius:50px;text-decoration:none;font-weight:800;font-size:14px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(240,112,48,0.3);}
 .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 22px rgba(240,112,48,0.42);}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.nav-hamburger span{display:block;width:24px;height:2.5px;background:var(--azul-navy);border-radius:2px;transition:all .3s;}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg);}
+.nav-hamburger.open span:nth-child(2){opacity:0;}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg);}
+.nav-mobile{display:none;position:fixed;top:80px;left:0;right:0;background:rgba(250,252,255,0.98);backdrop-filter:blur(14px);border-bottom:1.5px solid var(--borda);padding:20px 5%;flex-direction:column;gap:4px;z-index:999;}
+.nav-mobile.open{display:flex;}
+.nav-mobile a{text-decoration:none;font-weight:700;font-size:15px;color:var(--texto);padding:12px 0;border-bottom:1px solid var(--borda);}
+.nav-mobile a:last-child{border-bottom:none;color:var(--laranja);}
+@media(max-width:960px){.nav-hamburger{display:flex;}}
 
 /* HERO */
 #hero{min-height:100vh;padding:108px 5% 70px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px;position:relative;overflow:hidden;}
@@ -65,7 +75,7 @@ h1 em{font-style:italic;color:var(--laranja);}
 .sobre-img-main img{width:100%;height:100%;object-fit:cover;}
 .sobre-img-sec{position:absolute;width:54%;height:230px;bottom:0;right:0;border-radius:var(--radius);overflow:hidden;box-shadow:0 12px 36px rgba(0,0,0,0.09);border:6px solid white;}
 .sobre-img-sec img{width:100%;height:100%;object-fit:cover;}
-.sobre-pill{position:absolute;background:var(--laranja);color:white;padding:10px 18px;border-radius:50px;font-size:13px;font-weight:800;text-align:center;line-height:1.4;top:50%;right:-14px;transform:translateY(-50%);box-shadow:0 8px 24px rgba(240,112,48,0.4);white-space:nowrap;}
+.sobre-pill{position:absolute;background:var(--laranja);color:white;padding:10px 18px;border-radius:50px;font-size:13px;font-weight:800;text-align:center;line-height:1.4;top:50%;right:8px;transform:translateY(-50%);box-shadow:0 8px 24px rgba(240,112,48,0.4);white-space:nowrap;}
 .sobre-texto p{font-size:16px;line-height:1.85;color:var(--texto-leve);margin-bottom:16px;}
 .valores-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;}
 .valor-item{background:var(--bg-off);border-radius:var(--radius-sm);padding:16px;display:flex;align-items:flex-start;gap:12px;}
@@ -247,6 +257,17 @@ footer{background:var(--azul-navy);color:rgba(255,255,255,0.65);padding:60px 5% 
     <li><a href="#contato">Contato</a></li>
   </ul>
   <a href="#matricula" class="nav-cta">Matricule-se</a>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav class="nav-mobile" id="nav-mobile">
+  <a href="#sobre" onclick="closeMobile()">Sobre nós</a>
+  <a href="#programas" onclick="closeMobile()">Programas</a>
+  <a href="#atividades" onclick="closeMobile()">Atividades</a>
+  <a href="#estrutura" onclick="closeMobile()">Estrutura</a>
+  <a href="#contato" onclick="closeMobile()">Contato</a>
+  <a href="#matricula" onclick="closeMobile()">Matricule-se</a>
 </nav>
 
 <!-- HERO -->
@@ -513,6 +534,17 @@ window.addEventListener('resize', checkReveal);
 setTimeout(function() {
   reveals.forEach(function(el) { el.classList.add('visible'); });
 }, 1000);
+
+var hamburger = document.getElementById('hamburger');
+var navMobile = document.getElementById('nav-mobile');
+hamburger.addEventListener('click', function() {
+  hamburger.classList.toggle('open');
+  navMobile.classList.toggle('open');
+});
+function closeMobile() {
+  hamburger.classList.remove('open');
+  navMobile.classList.remove('open');
+}
 
 function sendWhatsapp(btn) {
   var f = btn.closest('.contato-form');
