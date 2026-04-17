@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tapeçaria Assis — Fabricação própria com qualidade e durabilidade em cada costura. Especialistas em tapeçaria automotiva e estofados em São Paulo.">
 <title>Tapeçaria Assis | Fabricação Própria · Qualidade e Durabilidade</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700;900&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
@@ -648,6 +649,18 @@
     h1 { font-size: 3.8rem; }
     .hero-accent { display: none; }
   }
+
+  .nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+  .nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.85);border-radius:2px;transition:all .3s;}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-hamburger.open span:nth-child(2){opacity:0;}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .nav-mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(10,10,10,0.98);backdrop-filter:blur(10px);padding:16px 5%;flex-direction:column;gap:0;z-index:99;border-top:1px solid rgba(255,255,255,0.08);}
+  .nav-mobile-menu.open{display:flex;}
+  .nav-mobile-menu a{color:rgba(255,255,255,0.75);text-decoration:none;font-size:0.9rem;letter-spacing:0.06em;text-transform:uppercase;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);transition:color .2s;}
+  .nav-mobile-menu a:last-child{border-bottom:none;color:var(--gold);font-weight:600;}
+  @media(max-width:900px){.nav-hamburger{display:flex;}}
+
 </style>
 </head>
 <body>
@@ -655,12 +668,19 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Tapeçaria <span>ASSIS</span></div>
+  <button class="nav-hamburger" id="ta-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="#services">Serviços</a></li>
     <li><a href="#process">Como funciona</a></li>
     <li><a href="#why">Por que nós</a></li>
     <li><a href="#cta" class="nav-cta">Solicitar orçamento</a></li>
   </ul>
+</nav>
+<nav class="nav-mobile-menu" id="ta-mobile">
+  <a href="#services" onclick="taClose()">Serviços</a>
+  <a href="#process" onclick="taClose()">Como funciona</a>
+  <a href="#why" onclick="taClose()">Por que nós</a>
+  <a href="#cta" onclick="taClose()">Solicitar orçamento</a>
 </nav>
 
 <!-- HERO -->
@@ -839,9 +859,23 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Tapeçaria <span>ASSIS</span></div>
-  <div class="footer-copy">© 2025 Tapeçaria Assis · Todos os direitos reservados</div>
+  <div class="footer-copy">© 2026 Tapeçaria Assis · Todos os direitos reservados</div>
   <div class="footer-agency">Desenvolvido por <span>Agência Logos</span></div>
 </footer>
 
+<script>
+var taBtn = document.getElementById('ta-hamburger');
+var taMenu = document.getElementById('ta-mobile');
+if (taBtn) {
+  taBtn.addEventListener('click', function() {
+    taBtn.classList.toggle('open');
+    taMenu.classList.toggle('open');
+  });
+}
+function taClose() {
+  if (taBtn) taBtn.classList.remove('open');
+  if (taMenu) taMenu.classList.remove('open');
+}
+</script>
 </body>
 </html>
