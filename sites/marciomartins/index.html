@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Neuropsicólogo Márcio Martins — Atendimento especializado em neuropsicologia para crianças, adolescentes e adultos. Presencial em São Paulo e online.">
 <title>Márcio Martins | Neuropsicólogo</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
@@ -178,18 +179,37 @@
     .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
     .form-row { grid-template-columns: 1fr; }
   }
+
+  .nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+  .nav-hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;transition:all .3s;}
+  .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+  .nav-hamburger.open span:nth-child(2){opacity:0;}
+  .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+  .nav-mobile-menu{display:none;position:fixed;top:72px;left:0;right:0;background:rgba(13,27,62,0.98);backdrop-filter:blur(10px);padding:16px 24px;flex-direction:column;gap:0;z-index:99;border-top:1px solid rgba(255,255,255,0.1);}
+  .nav-mobile-menu.open{display:flex;}
+  .nav-mobile-menu a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.9rem;letter-spacing:0.08em;text-transform:uppercase;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.07);transition:color .2s;}
+  .nav-mobile-menu a:last-child{border-bottom:none;color:var(--sky);font-weight:500;}
+  @media(max-width:900px){.nav-hamburger{display:flex;}}
+
 </style>
 </head>
 <body>
 
 <nav>
   <div class="logo">Márcio <span>Martins</span></div>
+  <button class="nav-hamburger" id="mm-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   <ul class="nav-links">
     <li><a href="#sobre">Sobre</a></li>
     <li><a href="#servicos">Serviços</a></li>
     <li><a href="#publico">Público</a></li>
     <li><a href="#contato" class="nav-cta">Agendar Consulta</a></li>
   </ul>
+</nav>
+<nav class="nav-mobile-menu" id="mm-mobile">
+  <a href="#sobre" onclick="mmClose()">Sobre</a>
+  <a href="#servicos" onclick="mmClose()">Serviços</a>
+  <a href="#publico" onclick="mmClose()">Público</a>
+  <a href="#contato" onclick="mmClose()">Agendar Consulta</a>
 </nav>
 
 <section class="hero">
@@ -417,10 +437,24 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 Márcio Martins Neuropsicólogo. Todos os direitos reservados.</span>
+    <span>© 2026 Márcio Martins Neuropsicólogo. Todos os direitos reservados.</span>
     <span class="made-by">Desenvolvido por <a href="#">Agência Logos</a></span>
   </div>
 </footer>
 
+<script>
+var mmBtn = document.getElementById('mm-hamburger');
+var mmMenu = document.getElementById('mm-mobile');
+if (mmBtn) {
+  mmBtn.addEventListener('click', function() {
+    mmBtn.classList.toggle('open');
+    mmMenu.classList.toggle('open');
+  });
+}
+function mmClose() {
+  if (mmBtn) mmBtn.classList.remove('open');
+  if (mmMenu) mmMenu.classList.remove('open');
+}
+</script>
 </body>
 </html>
