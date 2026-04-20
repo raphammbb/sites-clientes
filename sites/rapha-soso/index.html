@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nossa Playlist · soso & rapha</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=DM+Sans:wght@400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  /* =============================================
+     RESET & BASE
+  ============================================= */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #1A1218;
+    --surface:   #231820;
+    --surface2:  #2C1F28;
+    --primary:   #E8A598;
+    --secondary: #C9847A;
+    --accent:    #F2C4B8;
+    --badge-2:   #8FB8D0;
+    --text:      #F5EDE8;
+    --muted:     #9E7A75;
+    --border:    rgba(232,165,152,0.15);
+    --glow:      rgba(232,165,152,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* =============================================
+     MESH GRADIENT BACKGROUND
+  ============================================= */
+  .mesh-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+  .mesh-bg::before {
+    content: '';
+    position: absolute;
+    width: 80vmax;
+    height: 80vmax;
+    top: -20%;
+    left: -20%;
+    background: radial-gradient(ellipse, rgba(201,132,122,0.18) 0%, transparent 65%);
+    animation: meshDrift1 18s ease-in-out infinite;
+  }
+  .mesh-bg::after {
+    content: '';
+    position: absolute;
+    width: 70vmax;
+    height: 70vmax;
+    bottom: -20%;
+    right: -15%;
+    background: radial-gradient(ellipse, rgba(143,184,208,0.12) 0%, transparent 65%);
+    animation: meshDrift2 22s ease-in-out infinite;
+  }
+  .mesh-orb {
+    position: absolute;
+    width: 50vmax;
+    height: 50vmax;
+    top: 40%;
+    left: 40%;
+    background: radial-gradient(ellipse, rgba(232,165,152,0.10) 0%, transparent 65%);
+    animation: meshDrift3 15s ease-in-out infinite;
+  }
+
+  @keyframes meshDrift1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%       { transform: translate(8%, 12%) scale(1.1); }
+  }
+  @keyframes meshDrift2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%       { transform: translate(-10%, -8%) scale(0.95); }
+  }
+  @keyframes meshDrift3 {
+    0%, 100% { transform: translate(0, 0); }
+    33%       { transform: translate(-8%, 6%); }
+    66%       { transform: translate(6%, -8%); }
+  }
+
+  /* =============================================
+     LAYOUT WRAPPER
+  ============================================= */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* =============================================
+     HERO
+  ============================================= */
+  .hero {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 24px 60px;
+    gap: 20px;
+  }
+
+  .hero-eyebrow {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: var(--secondary);
+    letter-spacing: 0.02em;
+    opacity: 0.9;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 10vw, 7rem);
+    font-weight: 600;
+    line-height: 1.05;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--primary);
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    font-style: italic;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+  }
+
+  .hero-names {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-weight: 500;
+    color: var(--text);
+    margin-top: 8px;
+  }
+
+  .hero-names .name-1 { color: var(--primary); }
+  .hero-names .name-2 { color: var(--badge-2); }
+
+  .heart {
+    font-size: 1.3em;
+    display: inline-block;
+    animation: heartbeat 1.4s ease-in-out infinite;
+    color: var(--primary);
+  }
+
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    14%       { transform: scale(1.3); }
+    28%       { transform: scale(1); }
+    42%       { transform: scale(1.2); }
+    56%       { transform: scale(1); }
+  }
+
+  .hero-scroll {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    animation: fadeInUp 1s ease 1.2s both;
+  }
+
+  .scroll-arrow {
+    width: 24px;
+    height: 24px;
+    animation: bounceDown 1.8s ease-in-out infinite;
+  }
+
+  @keyframes bounceDown {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(6px); }
+  }
+
+  /* =============================================
+     SECTION TITLES
+  ============================================= */
+  .section-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.15;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--primary);
+  }
+
+  /* =============================================
+     INSIGHTS
+  ============================================= */
+  .insights-section {
+    padding: 80px 0;
+  }
+
+  .insights-track {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(220px, 1fr));
+    gap: 16px;
+    overflow-x: auto;
+    padding-bottom: 16px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .insights-track::-webkit-scrollbar { height: 4px; }
+  .insights-track::-webkit-scrollbar-track { background: transparent; }
+  .insights-track::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 180px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .insight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top left, rgba(232,165,152,0.08), transparent 60%);
+    pointer-events: none;
+  }
+
+  .insight-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(232,165,152,0.15);
+    border-color: rgba(232,165,152,0.3);
+  }
+
+  .insight-card.highlight {
+    background: linear-gradient(135deg, #2C1F28 0%, #231820 100%);
+    border-color: rgba(232,165,152,0.35);
+  }
+
+  .insight-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(232,165,152,0.12);
+  }
+
+  .insight-icon svg { width: 18px; height: 18px; }
+
+  .insight-card.blue .insight-icon { background: rgba(143,184,208,0.12); }
+  .insight-card.gold .insight-icon { background: rgba(242,196,184,0.12); }
+
+  .insight-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .insight-card-body {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  .insight-card-body strong { color: var(--accent); font-weight: 500; }
+
+  .insight-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    width: fit-content;
+  }
+
+  .tag-pink  { background: rgba(232,165,152,0.18); color: var(--primary); }
+  .tag-blue  { background: rgba(143,184,208,0.18); color: var(--badge-2); }
+  .tag-gold  { background: rgba(242,196,184,0.15); color: var(--accent); }
+
+  /* =============================================
+     MÚSICAS GRID
+  ============================================= */
+  .playlist-section {
+    padding: 80px 0 120px;
+  }
+
+  .grid-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 8px 18px;
+    border-radius: 30px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.02em;
+  }
+
+  .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+  .filter-btn.active { background: rgba(232,165,152,0.15); border-color: var(--primary); color: var(--primary); }
+  .filter-btn.active-blue { background: rgba(143,184,208,0.15); border-color: var(--badge-2); color: var(--badge-2); }
+
+  .grid-count {
+    margin-left: auto;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .music-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  /* Card de música */
+  .music-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cardIn 0.5s ease forwards;
+  }
+
+  .music-card:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+
+  .music-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 48px rgba(232,165,152,0.18);
+    border-color: rgba(232,165,152,0.3);
+  }
+
+  @keyframes cardIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .card-top {
+    position: relative;
+  }
+
+  .card-cover {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    background: linear-gradient(135deg, #1A1218, #C9847A);
+  }
+
+  .cover-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #1A1218 0%, #C9847A 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: rgba(245,237,232,0.6);
+  }
+
+  .card-number {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(26,18,24,0.75);
+    backdrop-filter: blur(6px);
+    color: var(--muted);
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 3px 8px;
+    border-radius: 6px;
+    line-height: 1;
+  }
+
+  .card-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    backdrop-filter: blur(6px);
+  }
+
+  .badge-1 {
+    background: rgba(232,165,152,0.25);
+    color: var(--primary);
+    border: 1px solid rgba(232,165,152,0.3);
+  }
+
+  .badge-2 {
+    background: rgba(143,184,208,0.25);
+    color: var(--badge-2);
+    border: 1px solid rgba(143,184,208,0.3);
+  }
+
+  .card-info { flex: 1; min-width: 0; }
+
+  .card-title {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.35;
+  }
+
+  .card-artist {
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 2px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-album {
+    font-size: 0.72rem;
+    color: var(--muted);
+    opacity: 0.6;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 70%;
+  }
+
+  .card-duration {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    flex-shrink: 0;
+  }
+
+  .card-lyrics-hint {
+    position: absolute;
+    inset: 0;
+    background: rgba(26,18,24,0.7);
+    backdrop-filter: blur(4px);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+  }
+
+  .card-lyrics-hint span {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.82rem;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .music-card:hover .card-lyrics-hint {
+    opacity: 1;
+  }
+
+  /* =============================================
+     MODAL DE LETRA
+  ============================================= */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,18,24,0.8);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 540px;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.92) translateY(16px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  }
+
+  .modal-overlay.open .modal {
+    transform: scale(1) translateY(0);
+  }
+
+  .modal-header {
+    padding: 20px 20px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .modal-cover {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .modal-cover-placeholder {
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #1A1218 0%, #C9847A 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: rgba(245,237,232,0.6);
+    flex-shrink: 0;
+  }
+
+  .modal-meta { flex: 1; min-width: 0; }
+
+  .modal-song {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .modal-artist {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .modal-close {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .modal-close:hover { background: rgba(232,165,152,0.12); color: var(--primary); border-color: var(--primary); }
+
+  .modal-body {
+    padding: 24px 20px;
+    overflow-y: auto;
+    flex: 1;
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .modal-body::-webkit-scrollbar { width: 4px; }
+  .modal-body::-webkit-scrollbar-track { background: transparent; }
+  .modal-body::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  /* Spinner */
+  .spinner-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding: 32px 0;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .spinner {
+    width: 32px;
+    height: 32px;
+    border: 2.5px solid rgba(232,165,152,0.2);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Letras */
+  .lyrics-text {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    line-height: 1.85;
+    white-space: pre-wrap;
+    opacity: 0;
+    animation: fadeInUp 0.4s ease forwards;
+  }
+
+  /* Mensagem fofa */
+  .lyrics-empty {
+    text-align: center;
+    padding: 32px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    animation: fadeInUp 0.4s ease forwards;
+  }
+
+  .lyrics-empty-icon {
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .lyrics-empty-msg {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .lyrics-empty-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* =============================================
+     FOOTER
+  ============================================= */
+  .footer {
+    text-align: center;
+    padding: 60px 24px 80px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+    margin: 0 auto 28px;
+  }
+
+  .footer-msg {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--primary);
+    margin-bottom: 12px;
+  }
+
+  .footer-credit {
+    font-size: 0.8rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-credit span { color: var(--primary); }
+
+  /* =============================================
+     RESPONSIVO
+  ============================================= */
+  @media (max-width: 1024px) {
+    .music-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .music-grid { grid-template-columns: 1fr; }
+    .insights-track { grid-template-columns: repeat(5, 240px); }
+    .hero { padding: 60px 16px 50px; }
+    .page { padding: 0 16px; }
+    .insights-section, .playlist-section { padding: 60px 0; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Mesh gradient animado -->
+<div class="mesh-bg" aria-hidden="true">
+  <div class="mesh-orb"></div>
+</div>
+
+<!-- =============================================
+     HERO
+============================================= -->
+<section class="hero" aria-label="Cabeçalho da playlist">
+  <p class="hero-eyebrow">uma playlist feita com carinho</p>
+  <h1 class="hero-title">Nossa <em>Playlist</em></h1>
+  <p class="hero-sub">46 músicas, uma história</p>
+  <div class="hero-names">
+    <span class="name-1">soso whitaker</span>
+    <span class="heart" aria-hidden="true">♥</span>
+    <span class="name-2">rapha_mmbb</span>
+  </div>
+  <div class="hero-scroll" aria-hidden="true">
+    <span>role para baixo</span>
+    <svg class="scroll-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14M5 12l7 7 7-7"/>
+    </svg>
+  </div>
+</section>
+
+<!-- =============================================
+     INSIGHTS ROMÂNTICOS
+============================================= -->
+<section class="insights-section" aria-label="Insights da playlist">
+  <div class="page">
+    <div class="section-header">
+      <p class="section-label">a nossa história em números</p>
+      <h2 class="section-title">O que essa <em>playlist</em> revela</h2>
+    </div>
+
+    <div class="insights-track" role="list">
+
+      <!-- Música do casal -->
+      <div class="insight-card highlight" role="listitem">
+        <div class="insight-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+          </svg>
+        </div>
+        <span class="insight-tag tag-gold">música do casal</span>
+        <p class="insight-card-title">Those Eyes<br>— New West</p>
+        <p class="insight-card-body">Uma música de olhares que prendem — perfeita para quem criou uma playlist inteira olhando um pro outro.</p>
+      </div>
+
+      <!-- Soso -->
+      <div class="insight-card" role="listitem">
+        <div class="insight-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <span class="insight-tag tag-pink">soso whitaker · 19 músicas</span>
+        <p class="insight-card-title">Sentimentos em<br>português e inglês</p>
+        <p class="insight-card-body">Apaixonada por <strong>ANAVITÓRIA</strong>, <strong>Lagum</strong> e <strong>Niall Horan</strong> — canções que abraçam a alma.</p>
+      </div>
+
+      <!-- Rapha -->
+      <div class="insight-card blue" role="listitem">
+        <div class="insight-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--badge-2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+          </svg>
+        </div>
+        <span class="insight-tag tag-blue">rapha_mmbb · 27 músicas</span>
+        <p class="insight-card-title">Romântico clássico<br>com alma pop</p>
+        <p class="insight-card-body">Crush pelo <strong>Ed Sheeran</strong>, <strong>Blake Shelton</strong> e <strong>Charlie Puth</strong> — do country ao pop com muito amor.</p>
+      </div>
+
+      <!-- Em comum -->
+      <div class="insight-card" role="listitem">
+        <div class="insight-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/>
+          </svg>
+        </div>
+        <span class="insight-tag tag-gold">artista em comum</span>
+        <p class="insight-card-title">Shawn Mendes</p>
+        <p class="insight-card-body">Os dois adicionaram uma música dele — o ponto onde os gostos se encontram no meio do caminho.</p>
+      </div>
+
+      <!-- Números -->
+      <div class="insight-card" role="listitem">
+        <div class="insight-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <span class="insight-tag tag-pink">em números</span>
+        <p class="insight-card-title">46 músicas<br>2h 39min</p>
+        <p class="insight-card-body">Dois gostos, uma playlist. <strong>41%</strong> dela, <strong>59%</strong> ele — e 100% amor.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     GRID DE MÚSICAS
+============================================= -->
+<section class="playlist-section" aria-label="Músicas da playlist">
+  <div class="page">
+    <div class="section-header">
+      <p class="section-label">clique para ver a letra</p>
+      <h2 class="section-title">As <em>46 músicas</em></h2>
+    </div>
+
+    <div class="grid-controls">
+      <button class="filter-btn active" data-filter="all">Todas</button>
+      <button class="filter-btn" data-filter="pessoa_1">soso whitaker</button>
+      <button class="filter-btn" data-filter="pessoa_2">rapha_mmbb</button>
+      <span class="grid-count" aria-live="polite" id="gridCount">46 músicas</span>
+    </div>
+
+    <div class="music-grid" id="musicGrid" role="list" aria-label="Lista de músicas"></div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+============================================= -->
+<footer class="footer" aria-label="Rodapé">
+  <div class="footer-line" aria-hidden="true"></div>
+  <p class="footer-msg">feito com amor</p>
+  <p class="footer-credit">feito com <span>♥</span> por rapha para soso</p>
+</footer>
+
+<!-- =============================================
+     MODAL DE LETRA
+============================================= -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalSongTitle">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div id="modalCoverWrap"></div>
+      <div class="modal-meta">
+        <p class="modal-song" id="modalSongTitle"></p>
+        <p class="modal-artist" id="modalArtistName"></p>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Fechar modal">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M1 1l12 12M13 1L1 13"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- =============================================
+     JAVASCRIPT
+============================================= -->
+<script>
+  /* ---- Dados da playlist ---- */
+  const DATA = {
+    "pessoas": { "pessoa_1": "soso whitaker", "pessoa_2": "rapha_mmbb" },
+    "musicas": [
+      {"numero":1,"musica":"This Town","artista":"Niall Horan","album":"Flicker (Deluxe)","capa":"https://i.scdn.co/image/ab67616d0000b2735bac234d5511248b248caf36","duracao":"3:52","adicionada_por":"pessoa_1"},
+      {"numero":2,"musica":"Lisboa","artista":"ANAVITÓRIA, Lenine","album":"COR","capa":"https://i.scdn.co/image/ab67616d0000b273b1e8a9fa2c21159ea637b766","duracao":"3:39","adicionada_por":"pessoa_1"},
+      {"numero":3,"musica":"universo de coisas que eu desconheço","artista":"ANAVITÓRIA, Lagum","album":"universo de coisas que eu desconheço","capa":"https://i.scdn.co/image/ab67616d0000b273ef4993ab187f7f510ac1dc08","duracao":"3:18","adicionada_por":"pessoa_1"},
+      {"numero":4,"musica":"Body Language (feat. The Swon Brothers)","artista":"Blake Shelton, The Swon Brothers","album":"Body Language (Deluxe)","capa":"https://i.scdn.co/image/ab67616d0000b27334d17f4c0e719bdde31c82c0","duracao":"2:49","adicionada_por":"pessoa_2"},
+      {"numero":5,"musica":"Enchanted","artista":"Taylor Swift","album":"Speak Now","capa":"https://i.scdn.co/image/ab67616d0000b273d0eae3c1661a96570f0ca7bd","duracao":"5:52","adicionada_por":"pessoa_1"},
+      {"numero":6,"musica":"Baby Blue","artista":"Lagum","album":"As Cores, as Curvas e as Dores do Mundo","capa":"https://i.scdn.co/image/ab67616d0000b273db0c7837abb7c812c5df8d93","duracao":"3:36","adicionada_por":"pessoa_1"},
+      {"numero":7,"musica":"I'll Name the Dogs","artista":"Blake Shelton","album":"Texoma Shore","capa":"https://i.scdn.co/image/ab67616d0000b2736af7773dc6d546ff54f4fd7f","duracao":"3:03","adicionada_por":"pessoa_2"},
+      {"numero":8,"musica":"I Won't Give Up","artista":"Jason Mraz","album":"Love Is a Four Letter Word","capa":"https://i.scdn.co/image/ab67616d0000b2737b7895e9d17aefd5b23e4d10","duracao":"4:00","adicionada_por":"pessoa_1"},
+      {"numero":9,"musica":"Explodir","artista":"ANAVITÓRIA","album":"COR","capa":"https://i.scdn.co/image/ab67616d0000b273b1e8a9fa2c21159ea637b766","duracao":"4:25","adicionada_por":"pessoa_1"},
+      {"numero":10,"musica":"Leave Your Life","artista":"Ed Sheeran","album":"= (Tour Edition)","capa":"https://i.scdn.co/image/ab67616d0000b273e3762d6ec43f1f276bc2d734","duracao":"3:43","adicionada_por":"pessoa_2"},
+      {"numero":11,"musica":"2step","artista":"Ed Sheeran","album":"= (Tour Edition)","capa":"https://i.scdn.co/image/ab67616d0000b273e3762d6ec43f1f276bc2d734","duracao":"2:33","adicionada_por":"pessoa_2"},
+      {"numero":12,"musica":"There's A First Time For Everything","artista":"Charlie Puth","album":"CHARLIE","capa":"https://i.scdn.co/image/ab67616d0000b2735b4f55dab7f4add889c5f44e","duracao":"2:16","adicionada_por":"pessoa_2"},
+      {"numero":13,"musica":"The Girl Can't Help It","artista":"Blake Shelton","album":"Body Language","capa":"https://i.scdn.co/image/ab67616d0000b273c27dd079b1bfc8da2aa0fde7","duracao":"2:44","adicionada_por":"pessoa_2"},
+      {"numero":14,"musica":"Perfect","artista":"Ed Sheeran","album":"÷ (Deluxe)","capa":"https://i.scdn.co/image/ab67616d0000b27314b3d447dbaee4d0ae8b8b64","duracao":"4:23","adicionada_por":"pessoa_2"},
+      {"numero":15,"musica":"Cor De Marte","artista":"ANAVITÓRIA","album":"ANAVITÓRIA","capa":"https://i.scdn.co/image/ab67616d0000b273e16c58c7ac3ce4e5f6b95ac3","duracao":"3:11","adicionada_por":"pessoa_1"},
+      {"numero":16,"musica":"Put It All on Me (feat. Ella Mai)","artista":"Ed Sheeran, Ella Mai","album":"No.6 Collaborations Project","capa":"https://i.scdn.co/image/ab67616d0000b273f528fc2d5d8b26e4e3413715","duracao":"3:17","adicionada_por":"pessoa_2"},
+      {"numero":17,"musica":"Never Be Alone","artista":"Shawn Mendes","album":"Handwritten","capa":"https://i.scdn.co/image/ab67616d0000b273d26246b23c8bfa8ce543b3bb","duracao":"3:35","adicionada_por":"pessoa_1"},
+      {"numero":18,"musica":"Little Bit More","artista":"Suriel Hess","album":"Little Bit More","capa":"https://i.scdn.co/image/ab67616d0000b273ab06a71fcd9de7dd357ed839","duracao":"3:00","adicionada_por":"pessoa_2"},
+      {"numero":19,"musica":"Forever and Ever and Always (The Softer Version)","artista":"Ryan Mack","album":"Forever and Ever and Always (The Softer Version)","capa":"https://i.scdn.co/image/ab67616d0000b273c7e9f36f9e99b44d1c4e0a63","duracao":"2:25","adicionada_por":"pessoa_1"},
+      {"numero":20,"musica":"Não Vou Mentir","artista":"Lagum","album":"Não Vou Mentir","capa":"https://i.scdn.co/image/ab67616d0000b273c61697d48aa0a59c90b11f14","duracao":"3:07","adicionada_por":"pessoa_1"},
+      {"numero":21,"musica":"Those Eyes","artista":"New West","album":"Based On A True Story...","capa":"https://i.scdn.co/image/ab67616d0000b2731c7b5ab62ec0ca1c37e61261","duracao":"3:40","adicionada_por":"pessoa_1"},
+      {"numero":22,"musica":"Can I Be Him","artista":"James Arthur","album":"Back from the Edge","capa":"https://i.scdn.co/image/ab67616d0000b273be1b6697af09ced7df1c7272","duracao":"4:06","adicionada_por":"pessoa_2"},
+      {"numero":23,"musica":"Test Drive - From How To Train Your Dragon Music From The Motion Picture","artista":"John Powell","album":"How To Train Your Dragon (Music From The Motion Picture)","capa":"https://i.scdn.co/image/ab67616d0000b2730f0f4a5ace37e8bfb0d5a8e6","duracao":"2:36","adicionada_por":"pessoa_2"},
+      {"numero":24,"musica":"Lembre de Mim (Canção de Ninar)","artista":"Leandro Luna, Mia Elisabetsky","album":"Viva - A Vida é uma Festa (Trilha Sonora Original em Português)","capa":"https://i.scdn.co/image/ab67616d0000b273d1432944be7de89ad6da3abf","duracao":"1:09","adicionada_por":"pessoa_2"},
+      {"numero":25,"musica":"O Mundo es mi Familia","artista":"Arthur Salerno, Nando Pradho","album":"Viva - A Vida é uma Festa (Trilha Sonora Original em Português)","capa":"https://i.scdn.co/image/ab67616d0000b273d1432944be7de89ad6da3abf","duracao":"0:50","adicionada_por":"pessoa_2"},
+      {"numero":26,"musica":"Free","artista":"Rumi, Jinu, KPop Demon Hunters Cast, EJAE, Andrew Choi","album":"KPop Demon Hunters (Soundtrack from the Netflix Film / Deluxe Version)","capa":"https://i.scdn.co/image/ab67616d0000b2731615e7967ac3430d802939c3","duracao":"3:07","adicionada_por":"pessoa_2"},
+      {"numero":27,"musica":"Kid In Love","artista":"Shawn Mendes","album":"Handwritten (Deluxe)","capa":"https://i.scdn.co/image/ab67616d0000b2732d6a4125a1d62dc6185f74ea","duracao":"3:45","adicionada_por":"pessoa_2"},
+      {"numero":28,"musica":"Love Love","artista":"Gilsons","album":"Várias Queixas","capa":"https://i.scdn.co/image/ab67616d0000b273a22fec4dc190d662da23978b","duracao":"3:25","adicionada_por":"pessoa_1"},
+      {"numero":29,"musica":"Camera","artista":"Ed Sheeran","album":"Play","capa":"https://i.scdn.co/image/ab67616d0000b273b07c28bb3192bdfb585fb438","duracao":"3:35","adicionada_por":"pessoa_2"},
+      {"numero":30,"musica":"I Think I Kinda, You Know - Duet","artista":"Olivia Rodrigo, Joshua Bassett, Disney","album":"High School Musical: The Musical: The Series (Original Soundtrack)","capa":"https://i.scdn.co/image/ab67616d0000b273e6d9e0e79756da52e0e3d5fe","duracao":"2:52","adicionada_por":"pessoa_2"},
+      {"numero":31,"musica":"Two Half Empty Cups","artista":"John Michael Howell","album":"Two Half Empty Cups","capa":"https://i.scdn.co/image/ab67616d0000b27307d4a9c0ce06ed9d783ed7d1","duracao":"2:35","adicionada_por":"pessoa_2"},
+      {"numero":32,"musica":"You & Me","artista":"James TW","album":"Chapters","capa":"https://i.scdn.co/image/ab67616d0000b2736f6fd002ef1fc6b1f3f90c87","duracao":"3:51","adicionada_por":"pessoa_1"},
+      {"numero":33,"musica":"The Perfect Gift","artista":"Joshua Bassett, Disney","album":"High School Musical: The Musical: The Series (Original Soundtrack/Season 2)","capa":"https://i.scdn.co/image/ab67616d0000b273fe1676c80689df2b5ce2716b","duracao":"2:39","adicionada_por":"pessoa_2"},
+      {"numero":34,"musica":"her (feat. Annika Wells)","artista":"JVKE, Annika Wells","album":"this is what ____ feels like (Vol. 1-4)","capa":"https://i.scdn.co/image/ab67616d0000b2736e2a09ce90d82a0b2e6e9c07","duracao":"2:47","adicionada_por":"pessoa_2"},
+      {"numero":35,"musica":"Girlfriend","artista":"Charlie Puth","album":"CHARLIE","capa":"https://i.scdn.co/image/ab67616d0000b2735b4f55dab7f4add889c5f44e","duracao":"2:57","adicionada_por":"pessoa_2"},
+      {"numero":36,"musica":"Te amar é massa demais","artista":"ANAVITÓRIA","album":"ANAVITÓRIA","capa":"https://i.scdn.co/image/ab67616d0000b273e16c58c7ac3ce4e5f6b95ac3","duracao":"4:04","adicionada_por":"pessoa_1"},
+      {"numero":37,"musica":"Canto Dos Firmeza","artista":"Pregador Luo, Templo Soul","album":"Canto dos Firmeza","capa":"https://i.scdn.co/image/ab67616d0000b273ab6e0d6fe6bff01264785e53","duracao":"5:07","adicionada_por":"pessoa_2"},
+      {"numero":38,"musica":"Seaside","artista":"The Kooks","album":"Inside In / Inside Out","capa":"https://i.scdn.co/image/ab67616d0000b273c58e0f4adebc2f5da5e7aeff","duracao":"1:39","adicionada_por":"pessoa_1"},
+      {"numero":39,"musica":"Andar Sozinho (feat. Jão)","artista":"Lagum, Jão","album":"Coisas da Geração","capa":"https://i.scdn.co/image/ab67616d0000b27304d5ce3b0e8f06e3f12c6b97","duracao":"3:00","adicionada_por":"pessoa_1"},
+      {"numero":40,"musica":"Coisa Linda","artista":"TIAGO IORC","album":"Troco Likes","capa":"https://i.scdn.co/image/ab67616d0000b2733bfcf38823c1e7d5cec2f0b4","duracao":"2:58","adicionada_por":"pessoa_1"},
+      {"numero":41,"musica":"Beautiful People (feat. Khalid)","artista":"Ed Sheeran, Khalid","album":"No.6 Collaborations Project","capa":"https://i.scdn.co/image/ab67616d0000b273f528fc2d5d8b26e4e3413715","duracao":"3:17","adicionada_por":"pessoa_2"},
+      {"numero":42,"musica":"Little Bit Of Love","artista":"John Michael Howell","album":"Little Bit Of Love","capa":"https://i.scdn.co/image/ab67616d0000b273b534b940e2de1e98d0f48bfc","duracao":"2:54","adicionada_por":"pessoa_2"},
+      {"numero":43,"musica":"Eu Feat. Você","artista":"Melim","album":"Eu Feat. Você","capa":"https://i.scdn.co/image/ab67616d0000b2731a0fb4bc5fde63d49e37f3bf","duracao":"3:05","adicionada_por":"pessoa_2"},
+      {"numero":44,"musica":"Eu Te Amo - Voz E Violão","artista":"Bryan Behr","album":"Simples","capa":"https://i.scdn.co/image/ab67616d0000b273e06f57090a2c23e9e5fb0bfb","duracao":"3:35","adicionada_por":"pessoa_2"},
+      {"numero":45,"musica":"Casal Maluco - Ao Vivo","artista":"Péricles, Jennifer Nascimento","album":"Casal Maluco (Ao Vivo)","capa":"https://i.scdn.co/image/ab67616d0000b2737f31b6d3c6c4527c7fc7a726","duracao":"3:38","adicionada_por":"pessoa_2"},
+      {"numero":46,"musica":"Sweet Creature","artista":"Harry Styles","album":"Harry Styles","capa":"https://i.scdn.co/image/ab67616d0000b2732ae2ee7b93eb71fdf93c3ece","duracao":"3:44","adicionada_por":"pessoa_1"}
+    ]
+  };
+
+  /* ---- Renderizar grid ---- */
+  const grid = document.getElementById('musicGrid');
+  const countEl = document.getElementById('gridCount');
+
+  function getInitial(artista) {
+    return artista.charAt(0).toUpperCase();
+  }
+
+  function buildCoverImg(m, cls, size) {
+    if (m.capa) {
+      return `<img src="${m.capa}" alt="Capa do álbum ${m.album}" class="${cls}" width="${size}" height="${size}" loading="lazy">`;
+    }
+    return `<div class="cover-placeholder" aria-hidden="true">${getInitial(m.artista)}</div>`;
+  }
+
+  function renderGrid(filter = 'all') {
+    const filtered = filter === 'all' ? DATA.musicas : DATA.musicas.filter(m => m.adicionada_por === filter);
+    grid.innerHTML = '';
+
+    filtered.forEach((m, i) => {
+      const isP1 = m.adicionada_por === 'pessoa_1';
+      const nome = DATA.pessoas[m.adicionada_por];
+      const badgeClass = isP1 ? 'badge-1' : 'badge-2';
+
+      const coverHtml = m.capa
+        ? `<img src="${m.capa}" alt="Capa de ${m.musica}" class="card-cover" loading="lazy">`
+        : `<div class="cover-placeholder" aria-hidden="true">${getInitial(m.artista)}</div>`;
+
+      const card = document.createElement('div');
+      card.className = 'music-card';
+      card.setAttribute('role', 'listitem');
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('aria-label', `${m.musica} por ${m.artista} — clique para ver a letra`);
+      card.style.animationDelay = `${i * 40}ms`;
+      card.dataset.index = DATA.musicas.indexOf(m);
+
+      card.innerHTML = `
+        <div class="card-top">
+          ${coverHtml}
+          <span class="card-number" aria-hidden="true">${String(m.numero).padStart(2,'0')}</span>
+          <span class="card-badge ${badgeClass}" aria-label="Adicionada por ${nome}">${isP1 ? 'soso' : 'rapha'}</span>
+        </div>
+        <div class="card-info">
+          <p class="card-title" title="${m.musica}">${m.musica}</p>
+          <p class="card-artist" title="${m.artista}">${m.artista}</p>
+        </div>
+        <div class="card-footer">
+          <span class="card-album" title="${m.album}">${m.album}</span>
+          <span class="card-duration">${m.duracao}</span>
+        </div>
+        <div class="card-lyrics-hint" aria-hidden="true">
+          <span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            ver letra
+          </span>
+        </div>
+      `;
+
+      card.addEventListener('click', () => openModal(DATA.musicas.indexOf(m)));
+      card.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(DATA.musicas.indexOf(m)); } });
+      grid.appendChild(card);
+    });
+
+    countEl.textContent = `${filtered.length} música${filtered.length !== 1 ? 's' : ''}`;
+  }
+
+  /* ---- Filtros ---- */
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => { b.className = 'filter-btn'; });
+      const f = btn.dataset.filter;
+      if (f === 'pessoa_2') btn.classList.add('active-blue');
+      else btn.classList.add('active');
+      renderGrid(f);
+    });
+  });
+
+  /* ---- Busca de letras ---- */
+  async function fetchLyrics(artista, musica) {
+    const artistaLimpo = artista.split(',')[0].trim();
+    const musicaLimpa = musica
+      .replace(/\s*-\s*From\s+.+$/i, '')
+      .replace(/\s*[\(\[].+?[\)\]]/g, '')
+      .replace(/\s*-\s*(Ao Vivo|Duet|Live|Acoustic).*/i, '')
+      .trim();
+
+    const url = `https://api.lyrics.ovh/v1/${encodeURIComponent(artistaLimpo)}/${encodeURIComponent(musicaLimpa)}`;
+    const res = await fetch(url, { signal: AbortSignal.timeout(8000) });
+    if (!res.ok) throw new Error('not found');
+    const data = await res.json();
+    if (!data.lyrics || data.lyrics.trim().length < 10) throw new Error('empty');
+    return data.lyrics.trim();
+  }
+
+  /* ---- Modal ---- */
+  const overlay = document.getElementById('modalOverlay');
+  const modalBody = document.getElementById('modalBody');
+  const modalSongTitle = document.getElementById('modalSongTitle');
+  const modalArtistName = document.getElementById('modalArtistName');
+  const modalCoverWrap = document.getElementById('modalCoverWrap');
+  const modalClose = document.getElementById('modalClose');
+
+  let lastFocused = null;
+
+  async function openModal(index) {
+    const m = DATA.musicas[index];
+    lastFocused = document.activeElement;
+
+    modalSongTitle.textContent = m.musica;
+    modalArtistName.textContent = m.artista;
+
+    if (m.capa) {
+      modalCoverWrap.innerHTML = `<img src="${m.capa}" alt="Capa de ${m.musica}" class="modal-cover">`;
+    } else {
+      modalCoverWrap.innerHTML = `<div class="modal-cover-placeholder" aria-hidden="true">${getInitial(m.artista)}</div>`;
+    }
+
+    modalBody.innerHTML = `
+      <div class="spinner-wrap" aria-live="polite" aria-label="Buscando letra...">
+        <div class="spinner" aria-hidden="true"></div>
+        <span>buscando a letra...</span>
+      </div>`;
+
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    modalClose.focus();
+
+    try {
+      const lyrics = await fetchLyrics(m.artista, m.musica);
+      modalBody.innerHTML = `<pre class="lyrics-text" tabindex="0">${escapeHtml(lyrics)}</pre>`;
+    } catch {
+      modalBody.innerHTML = `
+        <div class="lyrics-empty" aria-live="polite">
+          <span class="lyrics-empty-icon" aria-hidden="true">🎵</span>
+          <p class="lyrics-empty-msg">essa música fala mais alto que as palavras</p>
+          <p class="lyrics-empty-sub">letra não disponível — mas ela toca fundo mesmo assim</p>
+        </div>`;
+    }
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  function escapeHtml(str) {
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  modalClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  /* ---- Init ---- */
+  renderGrid();
+</script>
+</body>
+</html>
