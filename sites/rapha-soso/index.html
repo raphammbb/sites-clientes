@@ -790,6 +790,272 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
+
+  /* =============================================
+     MAIS INSIGHTS
+  ============================================= */
+  .more-insights-section { padding: 0 0 100px; }
+
+  .bento-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .bento-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.25s ease;
+  }
+
+  .bento-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(232,165,152,0.06), transparent 55%);
+    pointer-events: none;
+  }
+
+  .bento-card:hover { box-shadow: 0 10px 36px rgba(232,165,152,0.12); }
+
+  .bento-card.wide { grid-column: span 2; }
+  .bento-card.full { grid-column: span 3; }
+
+  .bento-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--secondary);
+    margin-bottom: 18px;
+  }
+
+  /* Ranking artistas */
+  .artist-rank { display: flex; flex-direction: column; gap: 10px; }
+
+  .rank-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .rank-pos {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--muted);
+    width: 20px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .rank-bar-wrap { flex: 1; position: relative; height: 28px; }
+
+  .rank-bar-bg {
+    position: absolute;
+    inset: 0;
+    background: rgba(232,165,152,0.06);
+    border-radius: 6px;
+  }
+
+  .rank-bar-fill {
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .rank-bar-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text);
+    z-index: 1;
+    gap: 8px;
+  }
+
+  .rank-bar-label span:last-child { color: var(--muted); font-size: 0.72rem; flex-shrink: 0; }
+
+  /* Idiomas */
+  .lang-visual { display: flex; flex-direction: column; gap: 18px; margin-top: 4px; }
+
+  .lang-bar-outer {
+    height: 10px;
+    border-radius: 10px;
+    background: rgba(143,184,208,0.12);
+    overflow: hidden;
+    margin: 6px 0;
+  }
+
+  .lang-bar-fill {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  .lang-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.82rem;
+  }
+
+  .lang-name { color: var(--text); font-weight: 500; }
+  .lang-count { color: var(--muted); }
+
+  /* Extremos */
+  .extremos { display: flex; flex-direction: column; gap: 16px; }
+
+  .extremo-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(232,165,152,0.05);
+    border: 1px solid rgba(232,165,152,0.08);
+  }
+
+  .extremo-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--secondary);
+  }
+
+  .extremo-song {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .extremo-meta { font-size: 0.75rem; color: var(--muted); }
+
+  /* Quotes */
+  .quotes-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+
+  .quote-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at bottom left, rgba(232,165,152,0.07), transparent 60%);
+    pointer-events: none;
+  }
+
+  .quote-mark {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    line-height: 0.6;
+    color: var(--secondary);
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+
+  .quote-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .quote-source {
+    font-size: 0.75rem;
+    color: var(--muted);
+  }
+
+  .quote-source strong { color: var(--primary); font-weight: 500; }
+
+  /* Carta */
+  .carta-card {
+    background: linear-gradient(135deg, #2C1F28 0%, #231820 100%);
+    border: 1px solid rgba(232,165,152,0.25);
+    border-radius: 24px;
+    padding: 48px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .carta-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(232,165,152,0.1), transparent 60%);
+    pointer-events: none;
+  }
+
+  .carta-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: var(--primary);
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .carta-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    font-style: italic;
+    color: var(--accent);
+    line-height: 1.9;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .carta-assinatura {
+    margin-top: 32px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.6rem;
+    color: var(--secondary);
+    position: relative;
+  }
+
+  @media (max-width: 1024px) {
+    .bento-card.wide { grid-column: span 1; }
+    .bento-grid { grid-template-columns: 1fr 1fr; }
+    .quotes-row { grid-template-columns: 1fr 1fr; }
+    .carta-card { padding: 36px 28px; }
+  }
+
+  @media (max-width: 640px) {
+    .bento-grid { grid-template-columns: 1fr; }
+    .bento-card.wide, .bento-card.full { grid-column: span 1; }
+    .quotes-row { grid-template-columns: 1fr; }
+    .more-insights-section { padding: 0 0 60px; }
+  }
 </style>
 </head>
 <body>
@@ -918,6 +1184,145 @@
 </section>
 
 <!-- =============================================
+     MAIS INSIGHTS
+============================================= -->
+<section class="more-insights-section" aria-label="Mais sobre a playlist">
+  <div class="page">
+    <div class="section-header">
+      <p class="section-label">o que os dados revelam</p>
+      <h2 class="section-title">Uma playlist que <em>conta uma história</em></h2>
+    </div>
+
+    <!-- Bento grid: ranking + idiomas + extremos -->
+    <div class="bento-grid">
+
+      <!-- Top artistas -->
+      <div class="bento-card wide">
+        <p class="bento-label">top artistas</p>
+        <div class="artist-rank" id="artistRank"></div>
+      </div>
+
+      <!-- Extremos -->
+      <div class="bento-card">
+        <p class="bento-label">extremos da playlist</p>
+        <div class="extremos">
+          <div class="extremo-item">
+            <span class="extremo-tag">mais longa</span>
+            <span class="extremo-song">Enchanted</span>
+            <span class="extremo-meta">Taylor Swift · 5:52</span>
+          </div>
+          <div class="extremo-item">
+            <span class="extremo-tag">mais curta</span>
+            <span class="extremo-song">O Mundo es mi Familia</span>
+            <span class="extremo-meta">Arthur Salerno · 0:50</span>
+          </div>
+          <div class="extremo-item">
+            <span class="extremo-tag">duração total</span>
+            <span class="extremo-song">2h 39min</span>
+            <span class="extremo-meta">46 músicas · tempo juntos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Idiomas -->
+      <div class="bento-card">
+        <p class="bento-label">idiomas</p>
+        <div class="lang-visual">
+          <div>
+            <div class="lang-row">
+              <span class="lang-name">Internacional</span>
+              <span class="lang-count">30 músicas · 65%</span>
+            </div>
+            <div class="lang-bar-outer">
+              <div class="lang-bar-fill" id="langBarEn" style="width:0%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="lang-row">
+              <span class="lang-name" style="color:var(--primary)">Português / Espanhol</span>
+              <span class="lang-count">16 músicas · 35%</span>
+            </div>
+            <div class="lang-bar-outer">
+              <div class="lang-bar-fill" id="langBarPt" style="width:0%; background: linear-gradient(90deg, var(--secondary), var(--accent))"></div>
+            </div>
+          </div>
+          <p style="font-size:0.78rem; color:var(--muted); line-height:1.5; margin-top:4px">
+            Ela trouxe o coração em português.<br>Ele trouxe a alma em inglês.<br>Juntos ficou perfeito.
+          </p>
+        </div>
+      </div>
+
+      <!-- Artista mais presente por pessoa -->
+      <div class="bento-card full" style="background: linear-gradient(135deg, rgba(44,31,40,0.8), rgba(35,24,32,0.8));">
+        <p class="bento-label">quem domina a playlist de cada um</p>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:4px">
+          <div style="display:flex; flex-direction:column; gap:8px">
+            <span style="font-size:0.78rem; color:var(--primary); font-weight:500">soso whitaker</span>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; color:var(--text); line-height:1.2">ANAVITÓRIA</p>
+            <p style="font-size:0.8rem; color:var(--muted)">5 músicas — a voz favorita dela na playlist</p>
+            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:4px">
+              <span style="font-size:0.7rem; padding:3px 9px; border-radius:20px; background:rgba(232,165,152,0.12); color:var(--primary)">Lisboa</span>
+              <span style="font-size:0.7rem; padding:3px 9px; border-radius:20px; background:rgba(232,165,152,0.12); color:var(--primary)">Explodir</span>
+              <span style="font-size:0.7rem; padding:3px 9px; border-radius:20px; background:rgba(232,165,152,0.12); color:var(--primary)">Cor De Marte</span>
+              <span style="font-size:0.7rem; padding:3px 9px; border-radius:20px; background:rgba(232,165,152,0.12); color:var(--primary)">+2</span>
+            </div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:8px; border-left:1px solid var(--border); padding-left:24px">
+            <span style="font-size:0.78rem; color:var(--badge-2); font-weight:500">rapha_mmbb</span>
+            <p style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:600; color:var(--text); line-height:1.2">Ed Sheeran</p>
+            <p style="font-size:0.8rem; color:var(--muted)">6 músicas — o artista favorito dele na playlist</p>
+            <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:4px">
+              <span style="font-size:0.7rem; padding:3px 9px; border-radius:20px; background:rgba(143,184,208,0.12); color:var(--badge-2)">Perfect</span>
+              <span style="font-size:0.7rem; padding:3px 9px; border-radius:20px; background:rgba(143,184,208,0.12); color:var(--badge-2)">Leave Your Life</span>
+              <span style="font-size:0.7rem; padding:3px 9px; border-radius:20px; background:rgba(143,184,208,0.12); color:var(--badge-2)">2step</span>
+              <span style="font-size:0.7rem; padding:3px 9px; border-radius:20px; background:rgba(143,184,208,0.12); color:var(--badge-2)">+3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Frases que ficam -->
+    <div class="section-header" style="margin-top:16px">
+      <p class="section-label">frases que ficam</p>
+      <h2 class="section-title">Letras que <em>falam por eles</em></h2>
+    </div>
+
+    <div class="quotes-row">
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">I won't give up on us<br>even if the skies get rough.<br>I'm giving you all my love.</p>
+        <p class="quote-source"><strong>I Won't Give Up</strong> — Jason Mraz</p>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Baby, I'm dancing in the dark<br>with you between my arms,<br>barefoot on the grass.</p>
+        <p class="quote-source"><strong>Perfect</strong> — Ed Sheeran</p>
+      </div>
+      <div class="quote-card">
+        <div class="quote-mark">"</div>
+        <p class="quote-text">Te amar é massa demais,<br>não cabe no peito<br>e transborda por aqui.</p>
+        <p class="quote-source"><strong>Te amar é massa demais</strong> — ANAVITÓRIA</p>
+      </div>
+    </div>
+
+    <!-- Carta final -->
+    <div class="carta-card">
+      <p class="carta-title">Para a soso</p>
+      <p class="carta-text">
+        Cada música aqui tem um pedacinho de quem somos.<br>
+        Ela trouxe a leveza do português, a profundidade da ANAVITÓRIA, o calor do Lagum.<br>
+        Ele trouxe o romantismo atemporal do Ed Sheeran, a simplicidade honesta do Blake Shelton.<br><br>
+        46 músicas. Dois gostos diferentes. Uma história só.
+      </p>
+      <p class="carta-assinatura">com amor, rapha ♥</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- =============================================
      FOOTER
 ============================================= -->
 <footer class="footer" aria-label="Rodapé">
@@ -1012,11 +1417,14 @@
     return artista.charAt(0).toUpperCase();
   }
 
-  function buildCoverImg(m, cls, size) {
-    if (m.capa) {
-      return `<img src="${m.capa}" alt="Capa do álbum ${m.album}" class="${cls}" width="${size}" height="${size}" loading="lazy">`;
-    }
-    return `<div class="cover-placeholder" aria-hidden="true">${getInitial(m.artista)}</div>`;
+  /* Fallback quando imagem do Spotify falha ao carregar */
+  function imgFail(img, initial, tipo) {
+    img.onerror = null;
+    const ph = document.createElement('div');
+    ph.className = tipo === 'modal' ? 'modal-cover-placeholder' : 'cover-placeholder';
+    ph.setAttribute('aria-hidden', 'true');
+    ph.textContent = initial;
+    img.parentNode.replaceChild(ph, img);
   }
 
   function renderGrid(filter = 'all') {
@@ -1028,9 +1436,10 @@
       const nome = DATA.pessoas[m.adicionada_por];
       const badgeClass = isP1 ? 'badge-1' : 'badge-2';
 
+      const ini = getInitial(m.artista);
       const coverHtml = m.capa
-        ? `<img src="${m.capa}" alt="Capa de ${m.musica}" class="card-cover" loading="lazy">`
-        : `<div class="cover-placeholder" aria-hidden="true">${getInitial(m.artista)}</div>`;
+        ? `<img src="${m.capa}" alt="Capa de ${m.musica}" class="card-cover" loading="lazy" onerror="imgFail(this,'${ini}')">`
+        : `<div class="cover-placeholder" aria-hidden="true">${ini}</div>`;
 
       const card = document.createElement('div');
       card.className = 'music-card';
@@ -1115,10 +1524,11 @@
     modalSongTitle.textContent = m.musica;
     modalArtistName.textContent = m.artista;
 
+    const mIni = getInitial(m.artista);
     if (m.capa) {
-      modalCoverWrap.innerHTML = `<img src="${m.capa}" alt="Capa de ${m.musica}" class="modal-cover">`;
+      modalCoverWrap.innerHTML = `<img src="${m.capa}" alt="Capa de ${m.musica}" class="modal-cover" onerror="imgFail(this,'${mIni}','modal')">`;
     } else {
-      modalCoverWrap.innerHTML = `<div class="modal-cover-placeholder" aria-hidden="true">${getInitial(m.artista)}</div>`;
+      modalCoverWrap.innerHTML = `<div class="modal-cover-placeholder" aria-hidden="true">${mIni}</div>`;
     }
 
     modalBody.innerHTML = `
@@ -1158,8 +1568,51 @@
   overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
 
+  /* ---- Ranking de artistas ---- */
+  function buildRanking() {
+    const counts = {};
+    DATA.musicas.forEach(m => {
+      const a = m.artista.split(',')[0].trim();
+      counts[a] = (counts[a] || 0) + 1;
+    });
+    const top = Object.entries(counts).sort((a,b) => b[1]-a[1]).slice(0,5);
+    const max = top[0][1];
+    const wrap = document.getElementById('artistRank');
+    if (!wrap) return;
+    top.forEach(([nome, qtd], i) => {
+      const pct = Math.round((qtd / max) * 100);
+      wrap.innerHTML += `
+        <div class="rank-row">
+          <span class="rank-pos">${i+1}</span>
+          <div class="rank-bar-wrap">
+            <div class="rank-bar-bg"></div>
+            <div class="rank-bar-fill" style="width:0%" data-pct="${pct}"></div>
+            <div class="rank-bar-label">
+              <span>${nome}</span>
+              <span>${qtd} música${qtd>1?'s':''}</span>
+            </div>
+          </div>
+        </div>`;
+    });
+    /* Animar barras quando entrar na viewport */
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          wrap.querySelectorAll('.rank-bar-fill').forEach(b => {
+            b.style.width = b.dataset.pct + '%';
+          });
+          document.getElementById('langBarEn').style.width = '65%';
+          document.getElementById('langBarPt').style.width = '35%';
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(wrap);
+  }
+
   /* ---- Init ---- */
   renderGrid();
+  buildRanking();
 </script>
 </body>
 </html>
