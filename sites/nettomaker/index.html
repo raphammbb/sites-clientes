@@ -132,15 +132,15 @@
       border-color: rgba(53, 51, 205, 0.45);
     }
     .nav-logo {
-      display: flex;
-      align-items: center;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      background: var(--chrome-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.05em;
       text-decoration: none;
-    }
-    .nav-logo img {
-      height: 36px;
-      width: auto;
-      object-fit: contain;
-      filter: brightness(1.05);
     }
     .nav-cta {
       font-family: var(--font-body);
@@ -803,14 +803,15 @@
     }
 
     .footer-brand-name {
-      display: block;
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 700;
+      background: var(--chrome-grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin-bottom: 12px;
-    }
-    .footer-brand-name img {
-      height: 44px;
-      width: auto;
-      object-fit: contain;
-      filter: brightness(1.05);
+      display: block;
     }
 
     .footer-razao {
@@ -923,7 +924,7 @@
     }
 
     @media (max-width: 600px) {
-      .nav-logo img { height: 28px; }
+      .nav-logo { font-size: 15px; }
       .nav-cta { padding: 8px 16px; font-size: 13px; }
       .pilares-grid { grid-template-columns: 1fr; }
       .servicos-grid { grid-template-columns: 1fr; }
@@ -937,9 +938,7 @@
 
   <!-- ============ NAVBAR ============ -->
   <nav class="nav" id="navbar" role="navigation" aria-label="Navegação principal">
-    <a href="#" class="nav-logo" aria-label="Nettomaker - Página inicial">
-      <img src="assets/logo.png" alt="Nettomaker" />
-    </a>
+    <a href="#" class="nav-logo" aria-label="Nettomaker - Página inicial">Nettomaker</a>
     <a href="#contato" class="nav-cta" aria-label="Fale com um estrategista">Fale com um Estrategista</a>
   </nav>
 
@@ -1260,9 +1259,7 @@
     <div class="container">
       <div class="footer-grid">
         <div>
-          <span class="footer-brand-name">
-            <img src="assets/logo.png" alt="Nettomaker" />
-          </span>
+          <span class="footer-brand-name">Nettomaker</span>
           <p class="footer-razao">
             Nettomaker Produções e Impacto Digital LTDA<br />
             Produtora Audiovisual Estratégica com Impacto Social
