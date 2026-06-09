@@ -913,6 +913,34 @@
     }
 
     /* =============================================
+       VÍDEO
+    ============================================= */
+    .video-section { background: var(--black); }
+
+    .video-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(53,51,205,0.3);
+      box-shadow: 0 0 80px rgba(53,51,205,0.18);
+      background: #050507;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-wrapper video::-webkit-media-controls-panel {
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+    }
+
+    /* =============================================
        RESPONSIVE
     ============================================= */
     @media (max-width: 900px) {
@@ -1242,6 +1270,33 @@
       </div>
     </div>
   </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
+
+  <!-- ============ VÍDEO ============ -->
+  <section class="video-section" id="video" aria-label="Vídeo Nettomaker">
+    <div class="container">
+      <div class="video-header reveal">
+        <span class="section-tag">Em Ação</span>
+        <h2 class="section-title chrome-text">Veja o nosso trabalho</h2>
+        <p class="section-lead">Uma amostra do que entregamos — qualidade cinematográfica a serviço da sua marca.</p>
+      </div>
+      <div class="video-wrapper reveal">
+        <video
+          controls
+          preload="metadata"
+          poster=""
+          aria-label="Vídeo de produção Nettomaker"
+          style="width:100%;height:100%;object-fit:cover;border-radius:16px;"
+        >
+          <source src="assets/video.mp4" type="video/mp4" />
+          Seu navegador não suporta vídeo HTML5.
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider" aria-hidden="true"></div>
 
   <!-- ============ CTA STRIP ============ -->
   <div class="cta-strip" aria-label="Chamada para ação final">
